@@ -2,10 +2,12 @@
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import ContactModal from "./contactModal";
 
 const Navbar = () => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   const pathname = usePathname();
   const locale = pathname.split("/").pop();
@@ -94,11 +96,17 @@ const Navbar = () => {
             >
               {content[lang].changeRegion}
             </button>
-            <button className="bg-[#3A4E84] text-white w-[140px] xl:w-[160px] h-[40px] rounded-lg hover:bg-[#fff] hover:border hover:border-[#3A4E84] hover:text-[#3A4E84] cursor-pointer">
+            <button
+              onClick={() => setOpenModal(true)}
+              className="bg-[#3A4E84] text-white w-[140px] xl:w-[160px] h-[40px] rounded-lg hover:bg-[#fff] hover:border hover:border-[#3A4E84] hover:text-[#3A4E84] cursor-pointer"
+            >
               {content[lang].contact}
             </button>
           </div>
         </div>
+
+        {/* MODAL */}
+        <ContactModal open={openModal} onClose={() => setOpenModal(false)} />
 
         {/* Hamburger */}
         <button
@@ -142,7 +150,10 @@ const Navbar = () => {
             >
               {content[lang].changeRegion}
             </button>
-            <button className="bg-[#3A4E84] text-white h-[44px] rounded-lg">
+            <button
+              onClick={() => setOpenModal(true)}
+              className="bg-[#3A4E84] text-white h-[44px] rounded-lg cursor-pointer"
+            >
               {content[lang].contact}
             </button>
           </div>
