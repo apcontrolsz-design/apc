@@ -42,7 +42,7 @@ export default function ContactModal({ open, onClose }) {
           onClick={onClose}
           className="
             absolute top-4 right-4 md:top-6 md:right-6
-            p-2 rounded-full hover:bg-gray-100 transition
+            p-2 rounded-full hover:bg-gray-100 transition cursor-pointer
           "
         >
           <X size={24} className="md:w-7 md:h-7" />

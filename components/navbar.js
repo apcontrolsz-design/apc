@@ -77,7 +77,10 @@ const Navbar = () => {
             >
               {content[lang].home}
             </li>
-            <li className="cursor-pointer hover:text-[#3A4E84]">
+            <li
+              onClick={() => router.push(`/product/${lang}`)}
+              className="cursor-pointer hover:text-[#3A4E84]"
+            >
               {content[lang].product}
             </li>
             <li className="cursor-pointer hover:text-[#3A4E84]">
@@ -137,7 +140,12 @@ const Navbar = () => {
             >
               {content[lang].home}
             </li>
-            <li className="cursor-pointer">{content[lang].product}</li>
+            <li
+              onClick={() => router.push(`/product/${lang}`)}
+              className="cursor-pointer"
+            >
+              {content[lang].product}
+            </li>
             <li className="cursor-pointer">{content[lang].customer}</li>
             <li className="cursor-pointer">{content[lang].about}</li>
           </ul>
