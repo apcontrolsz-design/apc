@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import { ContactModalProvider } from "./context/ContactModalContext";
+import ContactModalWrapper from "./context/ContactModalWrapper";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -51,7 +53,10 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={`${inter.variable} ${geistMono.variable} antialiased`}>
-        {children}
+        <ContactModalProvider>
+          {children}
+          <ContactModalWrapper />
+        </ContactModalProvider>
       </body>
     </html>
   );

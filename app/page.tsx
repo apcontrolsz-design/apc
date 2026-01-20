@@ -27,8 +27,8 @@ export default function Home() {
 
           <div className="flex flex-col gap-5 w-full items-center cursor-pointer">
             {[
-              ["Singapore", "AP Controls Pte Ltd", "/home/sg"],
-              ["Indonesia", "PT AP Controls Ltd", "/home/id"],
+              ["Singapore", "AP Controls Pte Ltd", "/sg"],
+              ["Indonesia", "PT AP Controls Ltd", "/id"],
               ["Malaysia", "Valve Store", "/home/my"],
             ].map(([country, company, path]) => (
               <button

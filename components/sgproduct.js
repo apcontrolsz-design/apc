@@ -100,8 +100,9 @@ const SgProduct = () => {
               transition-colors
               hover:bg-[#3A4E84]
               hover:text-white
+              cursor-pointer
             "
-            onClick={() => router.push("/")}
+            onClick={() => router.push(`/${lang}?contact=true`)}
           >
             Discuss Product Availability
           </button>

@@ -1,9 +1,30 @@
 "use client";
 import { X } from "lucide-react";
 import Image from "next/image";
+import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 export default function ContactModal({ open, onClose }) {
+  const pathname = usePathname();
+  const locale = pathname.split("/").pop();
+  const lang = ["id", "sg", "my"].includes(locale || "") ? locale : "sg";
+
+  useEffect(() => {
+    if (!open) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [open, onClose]);
+
   if (!open) return null;
 
   const content = {
@@ -20,10 +41,6 @@ export default function ContactModal({ open, onClose }) {
       email: "sales@apcontrols.com.sg",
     },
   };
-
-  const pathname = usePathname();
-  const locale = pathname.split("/").pop();
-  const lang = ["id", "sg", "my"].includes(locale || "") ? locale : "sg";
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center px-3 sm:px-4">

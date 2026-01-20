@@ -1,11 +1,11 @@
 import React from "react";
-import Navbar from "../../../components/navbar";
-import Hero from "../../../components/hero";
-import Brand from "../../../components/brand";
-import History from "../../../components/history";
-import Customer from "../../../components/customer";
-import Location from "../../../components/location";
-import Footer from "../../../components/footer";
+import Navbar from "../../components/navbar";
+import Hero from "../../components/hero";
+import Brand from "../../components/brand";
+import History from "../../components/history";
+import Customer from "../../components/customer";
+import Location from "../../components/location";
+import Footer from "../../components/footer";
 const page = () => {
   return (
     <div>
