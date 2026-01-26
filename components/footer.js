@@ -20,6 +20,17 @@ const Footer = () => {
       phone: "+65 6563 2098",
       email: "sales@apcontrols.com.sg",
     },
+    my: {
+      address: (
+        <>
+          52, Jln Rosmerah 2/16, Taman Johor Jaya, 81100 Johor Bahru, Johor{" "}
+          <br />
+          Darul Ta'zim, Malaysia
+        </>
+      ),
+      phone: "+60 73512522",
+      email: "sales@valvestore.com.my",
+    },
   };
 
   return (

@@ -40,6 +40,14 @@ export default function ContactModal({ open, onClose }) {
       phone: "+65 6563 2098",
       email: "sales@apcontrols.com.sg",
     },
+    my: {
+      desc: "For inquiries, quotations, or further discussions regarding our products and services, please contact us via email or phone.",
+      contact: "Contact Us",
+      phone: "+60 73512522",
+      email: "sales@valvestore.com.my",
+      address:
+        "52, Jln Rosmerah 2/16, Taman Johor Jaya, 81100 Johor Bahru, Johor Darul Ta'zim, Malaysia",
+    },
   };
 
   return (
@@ -115,6 +123,20 @@ export default function ContactModal({ open, onClose }) {
               {content[lang].phone}
             </span>
           </div>
+          {lang === "my" && (
+            <div className="flex items-center gap-3 md:gap-4">
+              <Image
+                src="/location.png"
+                alt="Location Icon"
+                width={28}
+                height={28}
+                className="w-[22px] h-[22px] md:w-[28px] md:h-[28px]"
+              />
+              <span className="text-base md:text-lg font-medium text-[#545454]">
+                {content[lang].address}
+              </span>
+            </div>
+          )}
         </div>
       </div>
     </div>

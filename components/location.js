@@ -23,6 +23,14 @@ const Location = () => {
       about: "About Us",
       region: "Select Your Region",
     },
+    my: {
+      title: "Regional Presence. Integrated Execution.",
+      p: "With operations in Singapore, Indonesia, and Malaysia, AP Controls supports regional customers through coordinated engineering, project execution, and local availability, via AP Controls Pte Ltd (Singapore), PT AP Controls (Indonesia), and Valve Store (Malaysia).",
+      img: "https://apcontrols.com.sg/images/be.png",
+      imgTitle: "Singapore | AP Controls Pte Ltd",
+      about: "About Us",
+      region: "Select Your Region",
+    },
   };
   const pathname = usePathname();
   const locale = pathname.split("/").pop();
@@ -51,29 +59,35 @@ const Location = () => {
         <p className="text-[14px] sm:text-[15px] lg:text-[16px] leading-[28px] lg:leading-[36px]">
           {content[lang].p}
         </p>
-        <div className="flex flex-row justify-center">
+        <div className="flex flex-row justify-center ">
           <div className="flex flex-wrap justify-center gap-15">
             {[
               {
                 img: "https://apcontrols.com.sg/images/apc-blue.png",
                 title: "Singapore | AP Controls Pte Ltd",
+                path: "/sg",
               },
               {
                 img: "https://apcontrols.com.sg/images/apc-blue.png",
                 title: "Indonesia | PT AP Controls",
+                path: "/id",
               },
               {
                 img: "https://apcontrols.com.sg/images/vs.png",
                 title: "Malaysia | Valve Store",
+                path: "/my",
               },
             ].map((item, index) => (
-              <div
+              <button
                 key={index}
+                type="button"
+                onClick={() => router.push(item.path)}
                 className="
-        flex flex-col items-center
-        gap-2
-        text-center
-      "
+                  flex flex-col items-center
+                  gap-2
+                  text-center
+                  cursor-pointer
+                "
               >
                 <img
                   src={item.img}
@@ -85,12 +99,15 @@ const Location = () => {
                 <span className="text-[13px] sm:text-[14px] text-gray-600">
                   {item.title}
                 </span>
-              </div>
+              </button>
             ))}
           </div>
         </div>
         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-          <button className="bg-[#3A4E84] text-white w-full sm:w-[240px] h-[56px] rounded-lg cursor-pointer hover:bg-[#fff] hover:border hover:border-[#3A4E84] hover:text-[#3A4E84]">
+          <button
+            onClick={() => router.push(`/${lang}/about`)}
+            className="bg-[#3A4E84] text-white w-full sm:w-[240px] h-[56px] rounded-lg cursor-pointer hover:bg-[#fff] hover:border hover:border-[#3A4E84] hover:text-[#3A4E84]"
+          >
             {content[lang].about}
           </button>
           <button

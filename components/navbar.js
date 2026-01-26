@@ -29,18 +29,15 @@ const Navbar = () => {
       product: "Products",
       customer: "Customers",
       about: "About Us",
-      changeRegion: "Change Region",
+      changeRegion: "Select Region",
       contact: "Contact Us",
     },
-    my: (
-      <>
-        AP Controls has more than 10 years of manufacturing experience,
-        especially in material handling systems,
-        <br />
-        supporting reliable and efficient project execution across various
-        industrial sectors.
-      </>
-    ),
+    my: {
+      home: "Home",
+      about: "About Us",
+      changeRegion: "Select Region",
+      contact: "Contact Us",
+    },
   };
 
   return (
@@ -79,18 +76,24 @@ const Navbar = () => {
             >
               {content[lang].home}
             </li>
-            <li
-              onClick={() => router.push(`/${lang}/product`)}
-              className="cursor-pointer hover:text-[#3A4E84]"
-            >
-              {content[lang].product}
-            </li>
+            {lang === "id" ||
+              (lang === "sg" && (
+                <li
+                  onClick={() => router.push(`/${lang}/product`)}
+                  className="cursor-pointer hover:text-[#3A4E84]"
+                >
+                  {content[lang].product}
+                </li>
+              ))}
             {lang === "id" && (
               <li className="cursor-pointer hover:text-[#3A4E84]">
                 {content[lang].customer}
               </li>
             )}
-            <li className="cursor-pointer hover:text-[#3A4E84]">
+            <li
+              onClick={() => router.push(`/${lang}/about`)}
+              className="cursor-pointer hover:text-[#3A4E84]"
+            >
               {content[lang].about}
             </li>
           </ul>
@@ -141,14 +144,25 @@ const Navbar = () => {
             >
               {content[lang].home}
             </li>
+            {lang === "id" ||
+              (lang === "sg" && (
+                <li
+                  onClick={() => router.push(`/${lang}/product`)}
+                  className="cursor-pointer"
+                >
+                  {content[lang].product}
+                </li>
+              ))}
+            {lang === "id" && (
+              <li className="cursor-pointer">{content[lang].customer}</li>
+            )}
+
             <li
-              onClick={() => router.push(`/${lang}/product`)}
+              onClick={() => router.push(`/${lang}/about`)}
               className="cursor-pointer"
             >
-              {content[lang].product}
+              {content[lang].about}
             </li>
-            <li className="cursor-pointer">{content[lang].customer}</li>
-            <li className="cursor-pointer">{content[lang].about}</li>
           </ul>
 
           <div className="flex flex-col gap-4 mt-6 text-sm">
@@ -160,7 +174,7 @@ const Navbar = () => {
               {content[lang].changeRegion}
             </button>
             <button
-              onClick={() => openModal}
+              onClick={openModal}
               className="bg-[#3A4E84] text-white h-[44px] rounded-lg cursor-pointer"
             >
               {content[lang].contact}

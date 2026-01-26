@@ -29,7 +29,7 @@ export default function Home() {
             {[
               ["Singapore", "AP Controls Pte Ltd", "/sg"],
               ["Indonesia", "PT AP Controls Ltd", "/id"],
-              ["Malaysia", "Valve Store", "/home/my"],
+              ["Malaysia", "Valve Store", "/my"],
             ].map(([country, company, path]) => (
               <button
                 key={country}
