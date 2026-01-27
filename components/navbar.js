@@ -12,9 +12,8 @@ const Navbar = () => {
   const { openModal } = useContactModal();
 
   const pathname = usePathname();
-  const locale = pathname.split("/").pop();
-  const lang = ["id", "sg", "my"].includes(locale || "") ? locale : "sg";
-
+  const segments = pathname.split("/");
+  const lang = ["id", "sg", "my"].includes(segments[1]) ? segments[1] : "sg";
   const content = {
     id: {
       home: "Halaman Utama",
@@ -76,17 +75,19 @@ const Navbar = () => {
             >
               {content[lang].home}
             </li>
-            {lang === "id" ||
-              (lang === "sg" && (
-                <li
-                  onClick={() => router.push(`/${lang}/product`)}
-                  className="cursor-pointer hover:text-[#3A4E84]"
-                >
-                  {content[lang].product}
-                </li>
-              ))}
+            {(lang === "id" || lang === "sg") && (
+              <li
+                onClick={() => router.push(`/${lang}/product`)}
+                className="cursor-pointer hover:text-[#3A4E84]"
+              >
+                {content[lang].product}
+              </li>
+            )}
             {lang === "id" && (
-              <li className="cursor-pointer hover:text-[#3A4E84]">
+              <li
+                onClick={() => router.push(`/${lang}/customer`)}
+                className="cursor-pointer hover:text-[#3A4E84]"
+              >
                 {content[lang].customer}
               </li>
             )}
@@ -144,17 +145,21 @@ const Navbar = () => {
             >
               {content[lang].home}
             </li>
-            {lang === "id" ||
-              (lang === "sg" && (
-                <li
-                  onClick={() => router.push(`/${lang}/product`)}
-                  className="cursor-pointer"
-                >
-                  {content[lang].product}
-                </li>
-              ))}
+            {(lang === "id" || lang === "sg") && (
+              <li
+                onClick={() => router.push(`/${lang}/product`)}
+                className="cursor-pointer"
+              >
+                {content[lang].product}
+              </li>
+            )}
             {lang === "id" && (
-              <li className="cursor-pointer">{content[lang].customer}</li>
+              <li
+                onClick={() => router.push(`/${lang}/customer`)}
+                className="cursor-pointer"
+              >
+                {content[lang].customer}
+              </li>
             )}
 
             <li

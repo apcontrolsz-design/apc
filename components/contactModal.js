@@ -6,8 +6,8 @@ import { usePathname } from "next/navigation";
 
 export default function ContactModal({ open, onClose }) {
   const pathname = usePathname();
-  const locale = pathname.split("/").pop();
-  const lang = ["id", "sg", "my"].includes(locale || "") ? locale : "sg";
+  const segments = pathname.split("/");
+  const lang = ["id", "sg", "my"].includes(segments[1]) ? segments[1] : "sg";
 
   useEffect(() => {
     if (!open) return;

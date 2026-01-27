@@ -1,6 +1,7 @@
 "use client";
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 /* =======================
    DATA
 ======================= */
@@ -68,14 +69,28 @@ const ResponsiveText = ({ text }) => {
 /* =======================
    MAIN COMPONENT
 ======================= */
+
 const ProductCarousel = () => {
+  const router = useRouter();
   const [index, setIndex] = useState(0);
+
+  const pathname = usePathname();
+  const segments = pathname.split("/");
+  const lang = ["id", "sg", "my"].includes(segments[1]) ? segments[1] : "sg";
 
   const next = () => setIndex((prev) => (prev + 1) % products.length);
   const prev = () =>
     setIndex((prev) => (prev - 1 + products.length) % products.length);
 
   const product = products[index];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % products.length);
+    }, 8000); // 8 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="w-full py-8">
@@ -171,7 +186,10 @@ const ProductCarousel = () => {
         ))}
       </div>
 
-      <button className="mt-6 border-2 border-[#3A4E84] text-[#3A4E84]  w-full sm:w-[240px] h-[56px] px-6 py-2.5 rounded-lg font-medium hover:bg-[#3A4E84] hover:text-white transition text-[14px] sm:text-[15px] lg:text-[16px] cursor-pointer">
+      <button
+        onClick={() => router.push(`/${lang}/product`)}
+        className="mt-6 border-2 border-[#3A4E84] text-[#3A4E84]  w-full sm:w-[240px] h-[56px] px-6 py-2.5 rounded-lg font-medium hover:bg-[#3A4E84] hover:text-white transition text-[14px] sm:text-[15px] lg:text-[16px] cursor-pointer"
+      >
         Lihat Semua Produk
       </button>
     </div>

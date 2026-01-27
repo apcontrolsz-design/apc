@@ -1,13 +1,15 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import ProductCarousel from "./products";
 
 const Brand = () => {
+  const router = useRouter();
   const pathname = usePathname();
-  const locale = pathname.split("/").pop();
-  const lang = ["id", "sg", "my"].includes(locale || "") ? locale : "sg";
+  const segments = pathname.split("/");
+  const lang = ["id", "sg", "my"].includes(segments[1]) ? segments[1] : "sg";
 
   const content = {
     id: (
@@ -89,7 +91,10 @@ const Brand = () => {
               ))}
             </div>
             <p>and other established partners.</p>
-            <button className="mt-6 border-2 border-[#3A4E84] text-[#3A4E84] w-full lg:w-[240px] px-6 py-2.5 rounded-lg font-medium hover:bg-[#3A4E84] hover:text-white transition cursor-pointer">
+            <button
+              onClick={() => router.push(`/${lang}/product`)}
+              className="mt-6 border-2 border-[#3A4E84] text-[#3A4E84] w-full lg:w-[240px] px-6 py-2.5 rounded-lg font-medium hover:bg-[#3A4E84] hover:text-white transition cursor-pointer"
+            >
               View Our Partners
             </button>
           </div>

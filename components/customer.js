@@ -1,11 +1,13 @@
 "use client";
 import React from "react";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const Customer = () => {
+  const router = useRouter();
   const pathname = usePathname();
-  const locale = pathname.split("/").pop();
-  const lang = ["id", "sg", "my"].includes(locale || "") ? locale : "sg";
+  const segments = pathname.split("/");
+  const lang = ["id", "sg", "my"].includes(segments[1]) ? segments[1] : "sg";
 
   const content = {
     id: {
@@ -96,6 +98,7 @@ const Customer = () => {
 
           {/* BUTTON */}
           <button
+            onClick={() => router.push(`${lang}/customer`)}
             className="
               mt-8
               border-2 border-[#3A4E84]

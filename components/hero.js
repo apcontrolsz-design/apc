@@ -2,11 +2,16 @@
 
 import React from "react";
 import { usePathname } from "next/navigation";
+import { useContactModal } from "../app/context/ContactModalContext";
+import { useRouter } from "next/navigation";
 
 const Hero = () => {
+  const router = useRouter();
   const pathname = usePathname();
-  const locale = pathname.split("/").pop();
-  const lang = ["id", "sg", "my"].includes(locale || "") ? locale : "sg";
+  const segments = pathname.split("/");
+  const lang = ["id", "sg", "my"].includes(segments[1]) ? segments[1] : "sg";
+
+  const { openModal } = useContactModal();
 
   const button = {
     id: { contact: "Hubungi Kami", product: "Jelajahi Produk Kami" },
@@ -69,10 +74,16 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <button className="bg-[#3A4E84] text-white w-full sm:w-[240px] h-[56px] rounded-lg">
+            <button
+              onClick={openModal}
+              className="bg-[#3A4E84] text-white w-full sm:w-[240px] h-[56px] rounded-lg cursor-pointer hover:bg-[#fff] hover:border hover:border-[#3A4E84] hover:text-[#3A4E84]"
+            >
               {button[lang].contact}
             </button>
-            <button className="border border-[#3A4E84] text-[#3A4E84] w-full sm:w-[240px] h-[56px] rounded-lg">
+            <button
+              onClick={() => router.push(`/${lang}/product`)}
+              className="border border-[#3A4E84] text-[#3A4E84] w-full sm:w-[240px] h-[56px] rounded-lg hover:bg-[#3A4E84] hover:text-white cursor-pointer"
+            >
               {button[lang].product}
             </button>
           </div>
