@@ -1,14 +1,14 @@
 import React from "react";
 import Navbar from "../../../components/navbar";
-import About from "../../../components/about";
-import Footer from "../../../components/footer";
+import Hero from "../../../components/id/hero";
+import ProductAccordion from "../../../components/id/productAccordion";
 
 const page = () => {
   return (
     <div>
       <Navbar />
-      <About />
-      <Footer />
+      <Hero />
+      <ProductAccordion />
     </div>
   );
 };

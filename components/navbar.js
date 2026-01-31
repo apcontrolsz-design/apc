@@ -4,16 +4,31 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import ContactModal from "./contactModal";
 import { useContactModal } from "../app/context/ContactModalContext";
+import RegionModal from "./RegionModal";
 
 const Navbar = () => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  const [openRegion, setOpenRegion] = useState(false);
 
   const { openModal } = useContactModal();
 
   const pathname = usePathname();
   const segments = pathname.split("/");
-  const lang = ["id", "sg", "my"].includes(segments[1]) ? segments[1] : "sg";
+  const langMap = {
+    id: "id",
+    sg: "sg",
+    my: "my",
+    "id-en": "id_en",
+  };
+
+  const routeMap = {
+    id: "id",
+    sg: "sg",
+    my: "my",
+    id_en: "id-en",
+  };
+  const lang = langMap[segments[1]] || "sg";
   const content = {
     id: {
       home: "Halaman Utama",
@@ -37,10 +52,33 @@ const Navbar = () => {
       changeRegion: "Select Region",
       contact: "Contact Us",
     },
+    id_en: {
+      home: "Home",
+      product: "Products",
+      customer: "Our Customers",
+      about: "About Us",
+      changeRegion: "Select Region",
+      contact: "Contact Us",
+    },
   };
+
+  const active = pathname.startsWith("/sg")
+    ? "sg"
+    : pathname.startsWith("/id-en")
+    ? "id-en"
+    : pathname.startsWith("/id")
+    ? "id"
+    : pathname.startsWith("/my")
+    ? "my"
+    : null;
 
   return (
     <header className="w-full  bg-white">
+      <RegionModal
+        open={openRegion}
+        onClose={() => setOpenRegion(false)}
+        active={active}
+      />
       <div className="max-w-[1440px] h-[118px] flex items-center justify-between px-4 mx-auto">
         {/* Logo */}
         <img
@@ -71,28 +109,28 @@ const Navbar = () => {
           <ul className="flex gap-8 xl:gap-10 text-sm font-medium">
             <li
               className="cursor-pointer hover:text-[#3A4E84]"
-              onClick={() => router.push(`/${lang}`)}
+              onClick={() => router.push(`/${routeMap[lang]}`)}
             >
               {content[lang].home}
             </li>
-            {(lang === "id" || lang === "sg") && (
+            {(lang === "id" || lang === "sg" || lang === "id_en") && (
               <li
-                onClick={() => router.push(`/${lang}/product`)}
+                onClick={() => router.push(`/${routeMap[lang]}/product`)}
                 className="cursor-pointer hover:text-[#3A4E84]"
               >
                 {content[lang].product}
               </li>
             )}
-            {lang === "id" && (
+            {(lang === "id" || lang === "id_en") && (
               <li
-                onClick={() => router.push(`/${lang}/customer`)}
+                onClick={() => router.push(`/${routeMap[lang]}/customer`)}
                 className="cursor-pointer hover:text-[#3A4E84]"
               >
                 {content[lang].customer}
               </li>
             )}
             <li
-              onClick={() => router.push(`/${lang}/about`)}
+              onClick={() => router.push(`/${routeMap[lang]}/about`)}
               className="cursor-pointer hover:text-[#3A4E84]"
             >
               {content[lang].about}
@@ -103,7 +141,8 @@ const Navbar = () => {
             <button
               className="border border-[#3A4E84] text-[#3A4E84] w-[140px] xl:w-[160px] h-[40px] rounded-lg transition-all duration-300 ease-out
                 hover:bg-[#3A4E84] hover:text-white cursor-pointer"
-              onClick={() => router.push("/")}
+              // onClick={() => router.push("/")}
+              onClick={() => setOpenRegion(true)}
             >
               {content[lang].changeRegion}
             </button>
@@ -141,21 +180,21 @@ const Navbar = () => {
           <ul className="flex flex-col gap-4 text-sm font-medium">
             <li
               className="cursor-pointer"
-              onClick={() => router.push(`/${lang}`)}
+              onClick={() => router.push(`/${routeMap[lang]}`)}
             >
               {content[lang].home}
             </li>
-            {(lang === "id" || lang === "sg") && (
+            {(lang === "id" || lang === "sg" || lang === "id_en") && (
               <li
-                onClick={() => router.push(`/${lang}/product`)}
+                onClick={() => router.push(`/${routeMap[lang]}/product`)}
                 className="cursor-pointer"
               >
                 {content[lang].product}
               </li>
             )}
-            {lang === "id" && (
+            {(lang === "id" || lang === "id_en") && (
               <li
-                onClick={() => router.push(`/${lang}/customer`)}
+                onClick={() => router.push(`/${routeMap[lang]}/customer`)}
                 className="cursor-pointer"
               >
                 {content[lang].customer}
@@ -163,7 +202,7 @@ const Navbar = () => {
             )}
 
             <li
-              onClick={() => router.push(`/${lang}/about`)}
+              onClick={() => router.push(`/${routeMap[lang]}/about`)}
               className="cursor-pointer"
             >
               {content[lang].about}
@@ -174,7 +213,7 @@ const Navbar = () => {
             <button
               className="border border-[#3A4E84] text-[#3A4E84] h-[44px] rounded-lg cursor-pointer transition-all duration-300 ease-out
                 hover:bg-[#3A4E84] hover:text-white"
-              onClick={() => router.push("/")}
+              onClick={() => setOpenRegion(true)}
             >
               {content[lang].changeRegion}
             </button>

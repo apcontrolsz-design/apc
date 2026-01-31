@@ -6,6 +6,16 @@ import { useRouter } from "next/navigation";
 
 const Location = () => {
   const router = useRouter();
+  const pathname = usePathname();
+  const segments = pathname.split("/");
+  const langMap = {
+    id: "id",
+    sg: "sg",
+    my: "my",
+    "id-en": "id_en",
+  };
+  const lang = langMap[segments[1]] || "sg";
+
   const content = {
     id: {
       title: "Jangkauan Operasional yang Terintegrasi",
@@ -14,6 +24,14 @@ const Location = () => {
       imgTitle: "Indonesia | PT AP Controls",
       about: "Tentang Kami",
       region: "Ganti Wilayah",
+    },
+    id_en: {
+      title: "Regional Presence. Integrated Execution.",
+      p: "With operations in Singapore, Indonesia, and Malaysia, AP Controls supports regional customers through coordinated engineering, project execution, and local availability, via AP Controls Pte Ltd (Singapore), PT AP Controls (Indonesia), and Valve Store (Malaysia).",
+      img: "https://apcontrols.com.sg/images/be.png",
+      imgTitle: "Indonesia | PT AP Controls",
+      about: "About Us",
+      region: "Select Your Region",
     },
     sg: {
       title: "Regional Presence. Integrated Execution.",
@@ -32,9 +50,7 @@ const Location = () => {
       region: "Select Your Region",
     },
   };
-  const pathname = usePathname();
-  const locale = pathname.split("/").pop();
-  const lang = ["id", "sg", "my"].includes(locale || "") ? locale : "sg";
+
   return (
     <section
       className="

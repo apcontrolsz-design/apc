@@ -9,7 +9,13 @@ const Hero = () => {
   const router = useRouter();
   const pathname = usePathname();
   const segments = pathname.split("/");
-  const lang = ["id", "sg", "my"].includes(segments[1]) ? segments[1] : "sg";
+  const langMap = {
+    id: "id",
+    sg: "sg",
+    my: "my",
+    "id-en": "id_en",
+  };
+  const lang = langMap[segments[1]] || "sg";
 
   const { openModal } = useContactModal();
 
@@ -17,6 +23,7 @@ const Hero = () => {
     id: { contact: "Hubungi Kami", product: "Jelajahi Produk Kami" },
     sg: { contact: "Contact Us", product: "Explore Our Products" },
     my: { contact: "Contact Us", product: "Explore Our Products" },
+    id_en: { contact: "Contact Us", product: "Explore Our Products" },
   };
 
   const content = {
@@ -26,6 +33,13 @@ const Hero = () => {
         manufaktur, khususnya dalam sistem <br />
         transport material, untuk mendukung pelaksanaan proyek yang andal dan
         efisien di berbagai sektor industri.
+      </>
+    ),
+    id_en: (
+      <>
+        PT AP Controls has over a decade of experience in manufacturing,
+        specializing in material handling systems <br /> to support reliable and
+        efficient project execution across various industrial sectors.
       </>
     ),
     sg: (
@@ -76,13 +90,13 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <button
               onClick={openModal}
-              className="bg-[#3A4E84] text-white w-full sm:w-[240px] h-[56px] rounded-lg cursor-pointer hover:bg-[#fff] hover:border hover:border-[#3A4E84] hover:text-[#3A4E84]"
+              className="bg-[#3A4E84] text-white w-full sm:w-[240px] h-[56px] rounded-lg cursor-pointer hover:bg-[#fff] hover:border hover:border-[#3A4E84] hover:text-[#3A4E84] font-bold"
             >
               {button[lang].contact}
             </button>
             <button
               onClick={() => router.push(`/${lang}/product`)}
-              className="border border-[#3A4E84] text-[#3A4E84] w-full sm:w-[240px] h-[56px] rounded-lg hover:bg-[#3A4E84] hover:text-white cursor-pointer"
+              className="border border-[#3A4E84] text-[#3A4E84] w-full sm:w-[240px] h-[56px] rounded-lg hover:bg-[#3A4E84] hover:text-white cursor-pointer font-bold"
             >
               {button[lang].product}
             </button>

@@ -7,42 +7,122 @@ import { usePathname } from "next/navigation";
 ======================= */
 const products = [
   {
-    title: "Bucket Elevator",
+    key: "bucket-elevator",
     img: "https://apcontrols.com.sg/images/be.png",
-    fungsi:
-      "Digunakan untuk mengangkat material curah secara vertikal dari satu level ke level lainnya.",
-    material:
-      "Gabah, semen, batu bara, pasir, pupuk, mineral, dan material curah lainnya.",
-    aplikasi:
-      "Semen, pertambangan, pembangkit listrik, pertanian, industri pangan, dan fasilitas penanganan material curah.",
+    content: {
+      id: {
+        title: "Bucket Elevator",
+        fungsi:
+          "Digunakan untuk mengangkat material curah secara vertikal dari satu level ke level lainnya.",
+        material:
+          "Gabah, semen, batu bara, pasir, pupuk, mineral, dan material curah lainnya.",
+        aplikasi:
+          "Semen, pertambangan, pembangkit listrik, pertanian, industri pangan, dan fasilitas penanganan material curah.",
+      },
+      id_en: {
+        title: "Bucket Elevator",
+        fungsi:
+          "Designed to vertically elevate bulk materials from one level to another.",
+        material:
+          "Rice grain, cement, coal, sand, fertilizer, minerals, and other bulk materials.",
+        aplikasi:
+          "Cement, mining, power generation, agriculture, food processing, and bulk material handling facilities.",
+      },
+    },
   },
+
   {
-    title: "Drum Pulley",
+    key: "drum-pulley",
     img: "https://apcontrols.com.sg/images/drum-pulley.png",
-    fungsi:
-      "Digunakan sebagai penggerak atau penegang pada sistem  || elevator belt.",
-    sistem:
-      "Slide lagging dirancang dalam bentuk segmen yang mudah || dilepas dan dipasang kembali, sehingga memungkinkan || penggantian lagging yang sudah aus tanpa perlu membongkar || drum pulley secara keseluruhan. Sistem ini mengurangi downtime || dan mempermudah proses perawatan di lapangan.",
+    content: {
+      id: {
+        title: "Drum Pulley",
+        fungsi:
+          "Digunakan sebagai penggerak atau penegang pada sistem || elevator belt.",
+        sistem:
+          "Slide lagging dirancang dalam bentuk segmen yang mudah || dilepas dan dipasang kembali, sehingga memungkinkan || penggantian lagging yang sudah aus tanpa perlu membongkar || drum pulley secara keseluruhan. Sistem ini mengurangi downtime || dan mempermudah proses perawatan di lapangan.",
+      },
+      id_en: {
+        title: "Drum Pulley",
+        fungsi: "Used as a drive component in belt elevator systems.",
+        sistem:
+          "Drum pulleys are available with various lagging options to suit application and operating requirements, including full lagging and slide lagging.",
+      },
+    },
   },
+
   {
-    title: "Chain Conveyor",
+    key: "chain-conveyor",
     img: "https://apcontrols.com.sg/images/cc.png",
-    fungsi:
-      "Berfungsi untuk memindahkan material curah secara horizontal atau dengan kemiringan ringan menggunakan sistem rantai.",
-    material:
-      "Clinker, batu bara, abu, scrap, material panas, dan material berat atau abrasif.",
-    aplikasi:
-      "Semen, baja, pembangkit listrik, pertambangan, dan industri berat.",
+    content: {
+      id: {
+        title: "Chain Conveyor",
+        fungsi:
+          "Berfungsi untuk memindahkan material curah secara horizontal atau dengan kemiringan ringan menggunakan sistem rantai.",
+        material:
+          "Clinker, batu bara, abu, scrap, material panas, dan material berat atau abrasif.",
+        aplikasi:
+          "Semen, baja, pembangkit listrik, pertambangan, dan industri berat.",
+      },
+      id_en: {
+        title: "Chain Conveyor",
+        fungsi:
+          "Designed to convey bulk materials horizontally or at a slight incline using a chain-driven system.",
+        material:
+          "Clinker, coal, ash, scrap, hot materials, and other heavy or abrasive materials.",
+        aplikasi:
+          "Cement, steel, power generation, mining, and heavy industries.",
+      },
+    },
+  },
+
+  {
+    key: "screw-conveyor",
+    img: "https://apcontrols.com.sg/images/screw-conveyor.png",
+    content: {
+      id: {
+        title: "Screw Conveyor",
+        fungsi:
+          "Digunakan untuk memindahkan material curah melalui ulir || berputar di dalam pipa atau trough tertutup.",
+        material:
+          "Serbuk dan granula seperti tepung, semen, fly ash, pasir, || biomassa, dan bahan kimia.",
+        aplikasi:
+          "Pangan & minuman, semen, kimia, farmasi, pertanian, dan || pengolahan limbah.",
+      },
+      id_en: {
+        title: "Screw Conveyor",
+        fungsi:
+          "Used to convey bulk materials through a rotating screw within a closed pipe or trough.",
+        material:
+          "Powders and granules such as flour, cement, fly ash, sand, biomass, and chemicals.",
+        aplikasi:
+          "Food & beverage, cement, chemical, pharmaceutical, agriculture, and waste processing industries.",
+      },
+    },
   },
   {
-    title: "Screw Conveyor",
-    img: "https://apcontrols.com.sg/images/screw-conveyor.png",
-    fungsi:
-      "Digunakan untuk memindahkan material curah melalui ulir || berputar di dalam pipa atau trough tertutup.",
-    material:
-      "Serbuk dan granula seperti tepung, semen, fly ash, pasir, || biomassa, dan bahan kimia.",
-    aplikasi:
-      "Pangan & minuman, semen, kimia, farmasi, pertanian, dan || pengolahan limbah.",
+    key: "belt-conveyor",
+    img: "https://apcontrols.com.sg/images/belt-conveyor.png",
+    content: {
+      id: {
+        title: "Belt Conveyor",
+        fungsi:
+          "Memindahkan material secara kontinu dari satu titik ke titik lainnya, baik secara horizontal maupun dengan kemiringan tertentu.",
+        material:
+          "Material curah seperti pasir, batu bara, bijih, grain, serta material satuan atau kemasan seperti karung, box, dan pallet.",
+        aplikasi:
+          "Industri pertambangan, semen, pupuk, food & beverage, pembangkit listrik, manufaktur, serta logistik dan pergudangan.",
+      },
+      id_en: {
+        title: "Belt Conveyor",
+        fungsi:
+          "Continuously transfers materials from one point to another, either horizontally or at an inclined angle.",
+        material:
+          "Bulk materials such as sand, coal, ore, and grain, as well as unit or packaged materials including bags, boxes, and pallets.",
+        aplikasi:
+          "Mining, cement, fertilizer, food & beverage, power generation, manufacturing, and logistics & warehousing industries.",
+      },
+    },
   },
 ];
 
@@ -76,13 +156,36 @@ const ProductCarousel = () => {
 
   const pathname = usePathname();
   const segments = pathname.split("/");
-  const lang = ["id", "sg", "my"].includes(segments[1]) ? segments[1] : "sg";
+  const langMap = {
+    id: "id",
+    sg: "sg",
+    my: "my",
+    "id-en": "id_en",
+  };
+  const lang = langMap[segments[1]] || "sg";
+
+  const labels = {
+    id: {
+      fungsi: "Fungsi",
+      material: "Material yang Ditangani",
+      aplikasi: "Aplikasi Industri",
+      sistem: "Sistem Slide Lagging",
+    },
+    id_en: {
+      fungsi: "Function",
+      material: "Materials Handled",
+      aplikasi: "Industrial Applications",
+      sistem: "Variants",
+    },
+  };
 
   const next = () => setIndex((prev) => (prev + 1) % products.length);
   const prev = () =>
     setIndex((prev) => (prev - 1 + products.length) % products.length);
 
   const product = products[index];
+  const t = product.content[lang] || product.content.id;
+  const tLabel = labels[lang] || labels.id;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -97,40 +200,40 @@ const ProductCarousel = () => {
       <div className="flex flex-col lg:flex-row items-start gap-8">
         {/* TEXT SECTION */}
         <div className="lg:w-1/2 w-full space-y-4">
-          <h2 className="font-bold text-2xl lg:text-3xl ">{product.title}</h2>
+          <h2 className="font-bold text-2xl lg:text-3xl ">{t.title}</h2>
 
           <div className="space-y-4">
-            <div>
+            <div className="leading-[36px]">
               <p className="font-bold  mb-1 text-[14px] sm:text-[15px] lg:text-[16px]">
-                Fungsi
+                {tLabel.fungsi}
               </p>
-              <ResponsiveText text={product.fungsi} />
+              <ResponsiveText text={t.fungsi} />
             </div>
 
-            {product.sistem && (
-              <div>
+            {t.sistem && (
+              <div className="leading-[36px]">
                 <p className="font-bold  mb-1 text-[14px] sm:text-[15px] lg:text-[16px]">
-                  Sistem Slide Lagging
+                  {tLabel.sistem}
                 </p>
-                <ResponsiveText text={product.sistem} />
+                <ResponsiveText text={t.sistem} />
               </div>
             )}
 
-            {product.material && (
-              <div>
+            {t.material && (
+              <div className="leading-[36px]">
                 <p className="font-bold mb-1 text-[14px] sm:text-[15px] lg:text-[16px]">
-                  Material yang Ditangani
+                  {tLabel.material}
                 </p>
-                <ResponsiveText text={product.material} />
+                <ResponsiveText text={t.material} />
               </div>
             )}
 
-            {product.aplikasi && (
-              <div>
+            {t.aplikasi && (
+              <div className="leading-[36px]">
                 <p className="font-bold mb-1 text-[14px] sm:text-[15px] lg:text-[16px]">
-                  Aplikasi Industri
+                  {tLabel.aplikasi}
                 </p>
-                <ResponsiveText text={product.aplikasi} />
+                <ResponsiveText text={t.aplikasi} />
               </div>
             )}
           </div>
@@ -186,12 +289,23 @@ const ProductCarousel = () => {
         ))}
       </div>
 
-      <button
-        onClick={() => router.push(`/${lang}/product`)}
-        className="mt-6 border-2 border-[#3A4E84] text-[#3A4E84]  w-full sm:w-[240px] h-[56px] px-6 py-2.5 rounded-lg font-medium hover:bg-[#3A4E84] hover:text-white transition text-[14px] sm:text-[15px] lg:text-[16px] cursor-pointer"
-      >
-        Lihat Semua Produk
-      </button>
+      {lang === "id" && (
+        <button
+          onClick={() => router.push(`/${lang}/product`)}
+          className="mt-6 border-2 border-[#3A4E84] text-[#3A4E84]  w-full sm:w-[240px] h-[56px] px-6 py-2.5 rounded-lg font-medium hover:bg-[#3A4E84] hover:text-white transition text-[14px] sm:text-[15px] lg:text-[16px] cursor-pointer font-bold"
+        >
+          Lihat Semua Produk
+        </button>
+      )}
+
+      {lang === "id_en" && (
+        <button
+          onClick={() => router.push(`/${lang}/product`)}
+          className="mt-6 border-2 border-[#3A4E84] text-[#3A4E84]  w-full sm:w-[240px] h-[56px] px-6 py-2.5 rounded-lg font-medium hover:bg-[#3A4E84] hover:text-white transition text-[14px] sm:text-[15px] lg:text-[16px] cursor-pointer font-bold"
+        >
+          Explore All Products
+        </button>
+      )}
     </div>
   );
 };

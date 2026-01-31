@@ -9,7 +9,13 @@ const Brand = () => {
   const router = useRouter();
   const pathname = usePathname();
   const segments = pathname.split("/");
-  const lang = ["id", "sg", "my"].includes(segments[1]) ? segments[1] : "sg";
+  const langMap = {
+    id: "id",
+    sg: "sg",
+    my: "my",
+    "id-en": "id_en",
+  };
+  const lang = langMap[segments[1]] || "sg";
 
   const content = {
     id: (
@@ -35,6 +41,14 @@ const Brand = () => {
         <br />
         supporting reliable and efficient project execution across various
         industrial sectors.
+      </>
+    ),
+    id_en: (
+      <>
+        Experienced in the manufacturing of bucket elevators, drum pulleys,
+        chain conveyors, screw conveyors, and supporting components for a wide{" "}
+        <br />
+        range of industrial applications.
       </>
     ),
   };
@@ -100,7 +114,7 @@ const Brand = () => {
           </div>
         </div>
       )}
-      {lang == "id" && (
+      {(lang === "id" || lang === "id_en") && (
         <div className="flex flex-col lg:flex-row items-center lg:items-stretch h-full">
           {/* TEXT */}
           <div
@@ -112,9 +126,21 @@ const Brand = () => {
             text-center lg:text-left
           "
           >
-            <h2 className="font-bold text-[28px] sm:text-[32px] lg:text-[36px]">
-              Spesialis Sistem Conveying Material
-            </h2>
+            {lang === "id" && (
+              <h2 className="font-bold text-[28px] sm:text-[32px] lg:text-[36px]">
+                Spesialis Sistem Conveying Material
+              </h2>
+            )}
+            {lang === "id_en" && (
+              <h2 className="font-bold text-[28px] sm:text-[32px] lg:text-[36px]">
+                Specialist in Material Conveying Systems
+              </h2>
+            )}
+            {lang === "id" && (
+              <h2 className="font-bold text-[28px] sm:text-[32px] lg:text-[36px]">
+                Spesialis Sistem Conveying Material
+              </h2>
+            )}
 
             <p className="text-[14px] sm:text-[15px] lg:text-[16px] leading-[28px] lg:leading-[36px]">
               {content[lang]}

@@ -5,10 +5,21 @@ import React from "react";
 const Footer = () => {
   const pathname = usePathname();
   const segments = pathname.split("/");
-  const lang = ["id", "sg", "my"].includes(segments[1]) ? segments[1] : "sg";
-
+  const langMap = {
+    id: "id",
+    sg: "sg",
+    my: "my",
+    "id-en": "id_en",
+  };
+  const lang = langMap[segments[1]] || "sg";
   const content = {
     id: {
+      address:
+        "Jl. Ratna Jatibening No. 1A Jatibening, Pondok Gede\nBekasi, 17412",
+      phone: "+62 21 8499 6745",
+      email: "indo.sales@apcontrols.com.sg",
+    },
+    id_en: {
       address:
         "Jl. Ratna Jatibening No. 1A Jatibening, Pondok Gede\nBekasi, 17412",
       phone: "+62 21 8499 6745",

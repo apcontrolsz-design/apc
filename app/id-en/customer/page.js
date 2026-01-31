@@ -1,16 +1,16 @@
 import React from "react";
 import Navbar from "../../../components/navbar";
-import About from "../../../components/about";
+import Customer from "../../../components/id/customer";
 import Footer from "../../../components/footer";
 
-const page = () => {
+const customer = () => {
   return (
     <div>
       <Navbar />
-      <About />
+      <Customer />
       <Footer />
     </div>
   );
 };
 
-export default page;
+export default customer;

@@ -5,9 +5,24 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 
 const About = () => {
-  const pathname = usePathname();
-  const lang = pathname.split("/")[1] || "sg";
   const router = useRouter();
+
+  const pathname = usePathname();
+  const segments = pathname.split("/");
+  const langMap = {
+    id: "id",
+    sg: "sg",
+    my: "my",
+    "id-en": "id_en",
+  };
+
+  const routeMap = {
+    id: "id",
+    sg: "sg",
+    my: "my",
+    id_en: "id-en",
+  };
+  const lang = langMap[segments[1]] || "sg";
   const content = {
     id: {
       title: "Sekilas AP Controls",
@@ -125,6 +140,65 @@ const About = () => {
       button_4: "Get in Touch",
     },
     my: {
+      title: "AP Controls Overview",
+      desc: (
+        <>
+          AP Controls is a trusted provider of engineering solutions and
+          industrial components for bulk material handling systems across the
+          Asia-Pacific region. Established in 1997 as a solenoid valve
+          specialist, the company was founded with a clear objective: to serve
+          regional industries by supplying proven engineering solutions,
+          initially by introducing high-quality imported equipment from Europe
+          to the Asia-Pacific market. <br></br> <br></br> Over time, AP Controls
+          has built strong technical capabilities and practical industry
+          knowledge, evolving from a product-focused distributor into a
+          solutions-oriented engineering partner. This progression has allowed
+          the company to support increasingly complex projects while maintaining
+          a focus on reliability, performance, and long-term operational value.
+        </>
+      ),
+      title_2: "AP Controls Pte Ltd",
+      desc_2: (
+        <>
+          AP Controls Pte Ltd, based in Singapore, serves as the regional office
+          for Asia-Pacific. The Singapore team oversees project coordination,
+          technical support, and product distribution, acting as a central point
+          of contact for regional customers and partners. With a strong
+          understanding of regional market requirements and engineering
+          standards, the office ensures consistent project execution, technical
+          alignment, and dependable service delivery across all operating
+          markets.
+        </>
+      ),
+      button_2: "Get in Touch",
+      title_3: "PT AP Controls",
+      desc_3: (
+        <>
+          PT AP Controls is the company’s project execution and manufacturing
+          hub, supported by a factory and an experienced engineering team. The
+          Indonesian operation has developed deep practical know-how in bulk
+          material handling systems, with particular expertise in drum pulleys,
+          conveyors, and installation works.
+          <br />
+          Through hands-on experience and in-house capabilities, PT AP Controls
+          delivers engineered project solutions, from fabrication to on-site
+          implementation, ensuring reliable performance and efficient execution
+          for industrial customers.
+        </>
+      ),
+      title_4: "Valve Store",
+      desc_4: (
+        <>
+          The Valve Store in Malaysia focuses on product availability and
+          customer support, offering a range of valves and industrial components
+          available off the shelf. This setup allows customers to source
+          essential components quickly, reducing <br /> downtime and supporting
+          day-to-day operational needs.
+        </>
+      ),
+      button_4: "Get in Touch",
+    },
+    id_en: {
       title: "AP Controls Overview",
       desc: (
         <>

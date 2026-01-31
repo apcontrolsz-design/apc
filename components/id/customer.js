@@ -8,16 +8,62 @@ import { useContactModal } from "../../app/context/ContactModalContext";
 const Customer = () => {
   const pathname = usePathname();
   const segments = pathname.split("/");
-  const lang = ["id", "sg", "my"].includes(segments[1]) ? segments[1] : "sg";
+  const langMap = {
+    id: "id",
+    sg: "sg",
+    my: "my",
+    "id-en": "id_en",
+  };
+
+  const routeMap = {
+    id: "id",
+    sg: "sg",
+    my: "my",
+    id_en: "id-en",
+  };
+  const lang = langMap[segments[1]] || "sg";
   const router = useRouter();
 
-  const { openModal } = useContactModal();
+  const content = {
+    id: {
+      title:
+        "Puluhan Tahun Dipercaya Perusahaan Terkemuka di Seluruh Indonesia",
+      p: (
+        <>
+          Terbukti di berbagai sektor industri dan dipercaya oleh pelanggan,
+          berlandaskan pengalaman puluhan tahun. <br /> Berikut adalah sebagian
+          pelanggan yang telah mempercayakan kebutuhan mereka kepada kami.
+        </>
+      ),
+      p2: "dan masih banyak pelanggan lainnya yang menghargai kualitas, presisi, dan respon cepat kami.",
+      contact: {
+        title: "Mari wujudkan proyek dan rencana Anda bersama kami.",
+        p: "Pelajari lebih lanjut tentang kami atau hubungi tim kami hari ini.",
+        contact: "Hubungi Kami",
+        about: "Tentang Kami",
+      },
+    },
 
-  const button = {
-    id: { contact: "Hubungi Kami", product: "Jelajahi Produk Kami" },
-    sg: { contact: "Contact Us", product: "Explore Our Products" },
-    my: { contact: "Contact Us", product: "Explore Our Products" },
+    id_en: {
+      title: "Trusted by Leading Companies Across Indonesia for Decades",
+      p: (
+        <>
+          Proven across various industrial sectors and trusted by customers,
+          built on decades of experience. <br /> Below are some of the customers
+          who have entrusted their needs to us.
+        </>
+      ),
+      p2: "And many more customers who value our quality, precision, and fast response.",
+      contact: {
+        title: "Let’s bring your projects and plans to life with us.",
+        p: "Learn more about us or contact our team today.",
+        contact: "Contact Us",
+        about: "About Us",
+      },
+    },
   };
+
+  const { openModal } = useContactModal();
 
   const logoClass =
     "w-[120px] h-[60px] sm:w-[136px] sm:h-[70px] object-contain";
@@ -60,7 +106,7 @@ const Customer = () => {
         {/* CONTENT */}
         <div className="text-center max-w-[800px]">
           <h2 className="font-bold text-[28px] sm:text-[32px] lg:text-[40px] mb-4 text-start text-white">
-            Puluhan Tahun Dipercaya Perusahaan Terkemuka di Seluruh Indonesia
+            {content[lang].title}
           </h2>
         </div>
       </section>
@@ -84,12 +130,7 @@ const Customer = () => {
         "
         >
           {/* DESCRIPTION */}
-          <p className="leading-[36px]">
-            Terbukti di berbagai sektor industri dan dipercaya oleh pelanggan,
-            berlandaskan pengalaman puluhan tahun. <br />
-            Berikut adalah sebagian pelanggan yang telah mempercayakan kebutuhan
-            mereka kepada kami.
-          </p>
+          <p className="leading-[36px]">{content[lang].p}</p>
 
           {/* LOGO ROWS */}
           <div className="flex flex-col gap-8">
@@ -116,10 +157,7 @@ const Customer = () => {
                 ))}
               </div>
             ))}
-            <p>
-              dan masih banyak pelanggan lainnya yang menghargai kualitas,
-              presisi, dan respon cepat kami.
-            </p>
+            <p>{content[lang].p2}</p>
           </div>
         </div>
       </section>
@@ -162,7 +200,7 @@ const Customer = () => {
     "
           >
             <h2 className="font-bold text-[22px] sm:text-[24px]">
-              Mari wujudkan proyek dan rencana Anda bersama kami.
+              {content[lang].contact.title}
             </h2>
 
             <p
@@ -174,7 +212,7 @@ const Customer = () => {
       text-justify
     "
             >
-              Pelajari lebih lanjut tentang kami atau hubungi tim kami hari ini.
+              {content[lang].contact.p}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -189,11 +227,11 @@ const Customer = () => {
           transition
         "
               >
-                Hubungi Kami
+                {content[lang].contact.contact}
               </button>
 
               <button
-                onClick={() => router.push(`/${lang}/about`)}
+                onClick={() => router.push(`/${routeMap[lang]}/about`)}
                 className="
           border border-[#3A4E84] text-[#3A4E84]
           w-full sm:w-[240px] h-[56px]
@@ -203,7 +241,7 @@ const Customer = () => {
           transition
         "
               >
-                Tentang Kami
+                {content[lang].contact.about}
               </button>
             </div>
           </div>

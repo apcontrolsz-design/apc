@@ -5,8 +5,14 @@ import { usePathname } from "next/navigation";
 
 const History = () => {
   const pathname = usePathname();
-  const locale = pathname.split("/").pop();
-  const lang = ["id", "sg", "my"].includes(locale || "") ? locale : "sg";
+  const segments = pathname.split("/");
+  const langMap = {
+    id: "id",
+    sg: "sg",
+    my: "my",
+    "id-en": "id_en",
+  };
+  const lang = langMap[segments[1]] || "sg";
 
   const content = {
     id: (
@@ -14,6 +20,13 @@ const History = () => {
         <strong>28+ tahun berpengalaman</strong>, dipercaya oleh<br></br>
         <strong>500+ pelanggan </strong>
         di Asia-Pasifik, dari<br></br> berbagai skala dan industri
+      </>
+    ),
+    id_en: (
+      <>
+        With <strong>+10 years of experience</strong>, PT AP<br></br>
+        Controls is trusted by companies of various <br /> sizes across
+        Indonesia.
       </>
     ),
     sg: (
@@ -60,6 +73,15 @@ const History = () => {
       industrial: "Industrial Automation",
       power: "Power Generation",
       mining: "Mining & Minerals Processing",
+      other: "and other industrial sectors",
+    },
+    id_en: {
+      oil: "Oil & Gas",
+      chemical: "Chemical & Petrochemical",
+      water: "Water & Wastewater",
+      industrial: "Industrial Automation",
+      power: "Energy",
+      mining: "Mining & Mineral Processing",
       other: "and other industrial sectors",
     },
   };

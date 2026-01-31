@@ -7,8 +7,13 @@ const Customer = () => {
   const router = useRouter();
   const pathname = usePathname();
   const segments = pathname.split("/");
-  const lang = ["id", "sg", "my"].includes(segments[1]) ? segments[1] : "sg";
-
+  const langMap = {
+    id: "id",
+    sg: "sg",
+    my: "my",
+    "id-en": "id_en",
+  };
+  const lang = langMap[segments[1]] || "sg";
   const content = {
     id: {
       title: "Dipercaya Perusahaan Terkemuka",
@@ -17,6 +22,10 @@ const Customer = () => {
     sg: {
       title: "Trusted by Industry Leaders",
       p: "Delivering dependable performance across demanding industrial environments.",
+    },
+    id_en: {
+      title: "Trusted by Leading Companies",
+      p: "Delivering reliable performance across diverse industrial environments, supported by a broad network of industry partners.",
     },
   };
 
@@ -94,7 +103,9 @@ const Customer = () => {
               ))}
             </div>
           ))}
-          <p>dan masih banyak lainnya.</p>
+          <p>
+            {lang === "id" ? "dan masih banyak lainnya." : "and many more."}
+          </p>
 
           {/* BUTTON */}
           <button
@@ -107,7 +118,7 @@ const Customer = () => {
               h-[56px]
               px-6 py-2.5
               rounded-lg
-              font-medium
+              font-bold
               hover:bg-[#3A4E84] hover:text-white
               transition
               text-[14px] sm:text-[15px] lg:text-[16px]
@@ -116,7 +127,7 @@ const Customer = () => {
               cursor-pointer
             "
           >
-            Lihat Pelanggan Kami
+            {lang === "id" ? "Lihat Pelanggan Kami" : "View Customer List"}
           </button>
         </div>
       </div>
