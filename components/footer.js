@@ -1,17 +1,19 @@
 "use client";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const Footer = () => {
   const pathname = usePathname();
-  const segments = pathname.split("/");
-  const langMap = {
-    id: "id",
-    sg: "sg",
-    my: "my",
-    "id-en": "id_en",
-  };
-  const lang = langMap[segments[1]] || "sg";
+
+  // ambil segment pertama
+  const segments = pathname.split("/").filter(Boolean);
+  const segment = segments[0];
+
+  // daftar bahasa yang valid
+  const allowedLangs = ["id", "en", "sg", "my"];
+
+  // tentukan lang
+  const lang = allowedLangs.includes(segment) ? segment : "sg";
   const content = {
     id: {
       address:
@@ -19,7 +21,7 @@ const Footer = () => {
       phone: "+62 21 8499 6745",
       email: "indo.sales@apcontrols.com.sg",
     },
-    id_en: {
+    en: {
       address:
         "Jl. Ratna Jatibening No. 1A Jatibening, Pondok Gede\nBekasi, 17412",
       phone: "+62 21 8499 6745",

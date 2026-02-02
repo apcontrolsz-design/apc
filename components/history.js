@@ -1,19 +1,20 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 const History = () => {
   const pathname = usePathname();
-  const segments = pathname.split("/");
-  const langMap = {
-    id: "id",
-    sg: "sg",
-    my: "my",
-    "id-en": "id_en",
-  };
-  const lang = langMap[segments[1]] || "sg";
 
+  // ambil segment pertama
+  const segments = pathname.split("/").filter(Boolean);
+  const segment = segments[0];
+
+  // daftar bahasa yang valid
+  const allowedLangs = ["id", "en", "sg", "my"];
+
+  // tentukan lang
+  const lang = allowedLangs.includes(segment) ? segment : "sg";
   const content = {
     id: (
       <>
@@ -22,7 +23,7 @@ const History = () => {
         di Asia-Pasifik, dari<br></br> berbagai skala dan industri
       </>
     ),
-    id_en: (
+    en: (
       <>
         With <strong>+10 years of experience</strong>, PT AP<br></br>
         Controls is trusted by companies of various <br /> sizes across
@@ -75,7 +76,7 @@ const History = () => {
       mining: "Mining & Minerals Processing",
       other: "and other industrial sectors",
     },
-    id_en: {
+    en: {
       oil: "Oil & Gas",
       chemical: "Chemical & Petrochemical",
       water: "Water & Wastewater",

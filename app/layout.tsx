@@ -4,6 +4,7 @@ import "./globals.css";
 import Script from "next/script";
 import { ContactModalProvider } from "./context/ContactModalContext";
 import ContactModalWrapper from "./context/ContactModalWrapper";
+import { Suspense } from "react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -52,12 +53,14 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={`${inter.variable} ${geistMono.variable} antialiased`}>
-        <ContactModalProvider>
-          {children}
-          <ContactModalWrapper />
-        </ContactModalProvider>
-      </body>
+      <Suspense>
+        <body className={`${inter.variable} ${geistMono.variable} antialiased`}>
+          <ContactModalProvider>
+            {children}
+            <ContactModalWrapper />
+          </ContactModalProvider>
+        </body>
+      </Suspense>
     </html>
   );
 }

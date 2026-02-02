@@ -155,14 +155,16 @@ const ProductCarousel = () => {
   const [index, setIndex] = useState(0);
 
   const pathname = usePathname();
-  const segments = pathname.split("/");
-  const langMap = {
-    id: "id",
-    sg: "sg",
-    my: "my",
-    "id-en": "id_en",
-  };
-  const lang = langMap[segments[1]] || "sg";
+
+  // ambil segment pertama
+  const segments = pathname.split("/").filter(Boolean);
+  const segment = segments[0];
+
+  // daftar bahasa yang valid
+  const allowedLangs = ["id", "en", "sg", "my"];
+
+  // tentukan lang
+  const lang = allowedLangs.includes(segment) ? segment : "sg";
 
   const labels = {
     id: {
@@ -171,7 +173,7 @@ const ProductCarousel = () => {
       aplikasi: "Aplikasi Industri",
       sistem: "Sistem Slide Lagging",
     },
-    id_en: {
+    en: {
       fungsi: "Function",
       material: "Materials Handled",
       aplikasi: "Industrial Applications",
@@ -298,7 +300,7 @@ const ProductCarousel = () => {
         </button>
       )}
 
-      {lang === "id_en" && (
+      {lang === "en" && (
         <button
           onClick={() => router.push(`/${lang}/product`)}
           className="mt-6 border-2 border-[#3A4E84] text-[#3A4E84]  w-full sm:w-[240px] h-[56px] px-6 py-2.5 rounded-lg font-medium hover:bg-[#3A4E84] hover:text-white transition text-[14px] sm:text-[15px] lg:text-[16px] cursor-pointer font-bold"

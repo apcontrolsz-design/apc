@@ -1,14 +1,21 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
 const SgProduct = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const locale = pathname.split("/").pop();
-  const lang = ["id", "sg", "my"].includes(locale || "") ? locale : "sg";
 
+  // ambil segment pertama
+  const segments = pathname.split("/").filter(Boolean);
+  const segment = segments[0];
+
+  // daftar bahasa yang valid
+  const allowedLangs = ["id", "en", "sg", "my"];
+
+  // tentukan lang
+  const lang = allowedLangs.includes(segment) ? segment : "sg";
   return (
     <section className="relative mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8 py-16">
       <div className="flex flex-col items-center gap-10">

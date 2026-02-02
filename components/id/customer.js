@@ -1,27 +1,23 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { useContactModal } from "../../app/context/ContactModalContext";
 
 const Customer = () => {
   const pathname = usePathname();
-  const segments = pathname.split("/");
-  const langMap = {
-    id: "id",
-    sg: "sg",
-    my: "my",
-    "id-en": "id_en",
-  };
 
-  const routeMap = {
-    id: "id",
-    sg: "sg",
-    my: "my",
-    id_en: "id-en",
-  };
-  const lang = langMap[segments[1]] || "sg";
+  // ambil segment pertama
+  const segments = pathname.split("/").filter(Boolean);
+  const segment = segments[0];
+
+  // daftar bahasa yang valid
+  const allowedLangs = ["id", "en", "sg", "my"];
+
+  // tentukan lang
+  const lang = allowedLangs.includes(segment) ? segment : "sg";
+
   const router = useRouter();
 
   const content = {
@@ -44,7 +40,7 @@ const Customer = () => {
       },
     },
 
-    id_en: {
+    en: {
       title: "Trusted by Leading Companies Across Indonesia for Decades",
       p: (
         <>
@@ -231,7 +227,7 @@ const Customer = () => {
               </button>
 
               <button
-                onClick={() => router.push(`/${routeMap[lang]}/about`)}
+                onClick={() => router.push(`/${lang}/about`)}
                 className="
           border border-[#3A4E84] text-[#3A4E84]
           w-full sm:w-[240px] h-[56px]

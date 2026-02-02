@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import ProductCarousel from "./products";
@@ -8,14 +8,16 @@ import ProductCarousel from "./products";
 const Brand = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const segments = pathname.split("/");
-  const langMap = {
-    id: "id",
-    sg: "sg",
-    my: "my",
-    "id-en": "id_en",
-  };
-  const lang = langMap[segments[1]] || "sg";
+
+  // ambil segment pertama
+  const segments = pathname.split("/").filter(Boolean);
+  const segment = segments[0];
+
+  // daftar bahasa yang valid
+  const allowedLangs = ["id", "en", "sg", "my"];
+
+  // tentukan lang
+  const lang = allowedLangs.includes(segment) ? segment : "sg";
 
   const content = {
     id: (
@@ -43,7 +45,7 @@ const Brand = () => {
         industrial sectors.
       </>
     ),
-    id_en: (
+    en: (
       <>
         Experienced in the manufacturing of bucket elevators, drum pulleys,
         chain conveyors, screw conveyors, and supporting components for a wide{" "}
@@ -106,7 +108,7 @@ const Brand = () => {
             </div>
             <p>and other established partners.</p>
             <button
-              onClick={() => router.push(`/${lang}/product`)}
+              onClick={() => router.push(`/${routeMap}/product`)}
               className="mt-6 border-2 border-[#3A4E84] text-[#3A4E84] w-full lg:w-[240px] px-6 py-2.5 rounded-lg font-medium hover:bg-[#3A4E84] hover:text-white transition cursor-pointer"
             >
               View Our Partners
@@ -114,7 +116,7 @@ const Brand = () => {
           </div>
         </div>
       )}
-      {(lang === "id" || lang === "id_en") && (
+      {(lang === "id" || lang === "en") && (
         <div className="flex flex-col lg:flex-row items-center lg:items-stretch h-full">
           {/* TEXT */}
           <div
@@ -131,14 +133,9 @@ const Brand = () => {
                 Spesialis Sistem Conveying Material
               </h2>
             )}
-            {lang === "id_en" && (
+            {lang === "en" && (
               <h2 className="font-bold text-[28px] sm:text-[32px] lg:text-[36px]">
                 Specialist in Material Conveying Systems
-              </h2>
-            )}
-            {lang === "id" && (
-              <h2 className="font-bold text-[28px] sm:text-[32px] lg:text-[36px]">
-                Spesialis Sistem Conveying Material
               </h2>
             )}
 

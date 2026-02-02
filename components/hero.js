@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useContactModal } from "../app/context/ContactModalContext";
 import { useRouter } from "next/navigation";
@@ -8,22 +8,23 @@ import { useRouter } from "next/navigation";
 const Hero = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const segments = pathname.split("/");
-  const langMap = {
-    id: "id",
-    sg: "sg",
-    my: "my",
-    "id-en": "id_en",
-  };
-  const lang = langMap[segments[1]] || "sg";
 
+  // ambil segment pertama
+  const segments = pathname.split("/").filter(Boolean);
+  const segment = segments[0];
+
+  // daftar bahasa yang valid
+  const allowedLangs = ["id", "en", "sg", "my"];
+
+  // tentukan lang
+  const lang = allowedLangs.includes(segment) ? segment : "sg";
   const { openModal } = useContactModal();
 
   const button = {
     id: { contact: "Hubungi Kami", product: "Jelajahi Produk Kami" },
     sg: { contact: "Contact Us", product: "Explore Our Products" },
     my: { contact: "Contact Us", product: "Explore Our Products" },
-    id_en: { contact: "Contact Us", product: "Explore Our Products" },
+    en: { contact: "Contact Us", product: "Explore Our Products" },
   };
 
   const content = {
@@ -35,7 +36,7 @@ const Hero = () => {
         efisien di berbagai sektor industri.
       </>
     ),
-    id_en: (
+    en: (
       <>
         PT AP Controls has over a decade of experience in manufacturing,
         specializing in material handling systems <br /> to support reliable and

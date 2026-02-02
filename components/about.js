@@ -1,6 +1,6 @@
 "use client";
-
-import React from "react";
+import Link from "next/link";
+import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 
@@ -8,21 +8,17 @@ const About = () => {
   const router = useRouter();
 
   const pathname = usePathname();
-  const segments = pathname.split("/");
-  const langMap = {
-    id: "id",
-    sg: "sg",
-    my: "my",
-    "id-en": "id_en",
-  };
 
-  const routeMap = {
-    id: "id",
-    sg: "sg",
-    my: "my",
-    id_en: "id-en",
-  };
-  const lang = langMap[segments[1]] || "sg";
+  // ambil segment pertama
+  const segments = pathname.split("/").filter(Boolean);
+  const segment = segments[0];
+
+  // daftar bahasa yang valid
+  const allowedLangs = ["id", "en", "sg", "my"];
+
+  // tentukan lang
+  const lang = allowedLangs.includes(segment) ? segment : "sg";
+
   const content = {
     id: {
       title: "Sekilas AP Controls",
@@ -198,7 +194,7 @@ const About = () => {
       ),
       button_4: "Get in Touch",
     },
-    id_en: {
+    en: {
       title: "AP Controls Overview",
       desc: (
         <>
@@ -357,14 +353,22 @@ const About = () => {
               {content[lang].desc_2}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <button
+              {/* <button
                 onClick={() =>
                   window.open(`/sg`, "_blank", "noopener,noreferrer")
                 }
-                className="border border-[#3A4E84] text-[#3A4E84] w-full sm:w-[248px] h-[56px] rounded-lg hover:bg-[#3A4E84] hover:text-white transition cursor-pointer mb-4"
               >
                 {content[lang].button_2}
-              </button>
+              </button> */}
+
+              <Link
+                href="https://apcontrols.com.sg/sg"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border border-[#3A4E84] text-[#3A4E84] w-full sm:w-[248px] h-[56px] rounded-lg flex items-center justify-center hover:bg-[#3A4E84] hover:text-white transition mb-4 cursor-pointer"
+              >
+                {content[lang].button_2}
+              </Link>
             </div>
           </div>
 
@@ -427,14 +431,14 @@ const About = () => {
               {content[lang].desc_3}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <button
-                onClick={() =>
-                  window.open(`/id`, "_blank", "noopener,noreferrer")
-                }
-                className="border border-[#3A4E84] text-[#3A4E84] w-full sm:w-[240px] h-[56px] rounded-lg hover:bg-[#3A4E84] hover:text-white transition cursor-pointer mb-4"
+              <Link
+                href="https://apcontrols.com.sg/id"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border border-[#3A4E84] text-[#3A4E84] w-full sm:w-[248px] h-[56px] rounded-lg flex items-center justify-center hover:bg-[#3A4E84] hover:text-white transition mb-4 cursor-pointer"
               >
                 {content[lang].button_2}
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -497,14 +501,14 @@ const About = () => {
               {content[lang].desc_4}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <button
-                onClick={() =>
-                  window.open(`/my`, "_blank", "noopener,noreferrer")
-                }
-                className="border border-[#3A4E84] text-[#3A4E84] w-full sm:w-[240px] h-[56px] rounded-lg hover:bg-[#3A4E84] hover:text-white transition cursor-pointer mb-4"
+              <Link
+                href="https://apcontrols.com.sg/my"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border border-[#3A4E84] text-[#3A4E84] w-full sm:w-[248px] h-[56px] rounded-lg flex items-center justify-center hover:bg-[#3A4E84] hover:text-white transition mb-4 cursor-pointer"
               >
                 {content[lang].button_4}
-              </button>
+              </Link>
             </div>
           </div>
 

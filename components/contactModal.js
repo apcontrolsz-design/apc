@@ -1,13 +1,21 @@
 "use client";
 import { X } from "lucide-react";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 export default function ContactModal({ open, onClose }) {
   const pathname = usePathname();
-  const segments = pathname.split("/");
-  const lang = ["id", "sg", "my"].includes(segments[1]) ? segments[1] : "sg";
+
+  // ambil segment pertama
+  const segments = pathname.split("/").filter(Boolean);
+  const segment = segments[0];
+
+  // daftar bahasa yang valid
+  const allowedLangs = ["id", "en", "sg", "my"];
+
+  // tentukan lang
+  const lang = allowedLangs.includes(segment) ? segment : "sg";
 
   useEffect(() => {
     if (!open) return;
@@ -29,6 +37,12 @@ export default function ContactModal({ open, onClose }) {
 
   const content = {
     id: {
+      desc: "Untuk pertanyaan, permintaan penawaran, atau diskusi lebih lanjut terkait produk dan layanan kami, silakan hubungi kami melalui email atau telepon.",
+      contact: "Kontak Kami",
+      phone: "+6221 8499 6745",
+      email: "indo.sales@apcontrols.com.sg",
+    },
+    en: {
       desc: "Untuk pertanyaan, permintaan penawaran, atau diskusi lebih lanjut terkait produk dan layanan kami, silakan hubungi kami melalui email atau telepon.",
       contact: "Kontak Kami",
       phone: "+6221 8499 6745",

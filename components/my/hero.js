@@ -1,15 +1,23 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useContactModal } from "../../app/context/ContactModalContext";
 
 const Hero = () => {
-  const pathname = usePathname();
-  const locale = pathname.split("/").pop();
-  const lang = ["id", "sg", "my"].includes(locale || "") ? locale : "sg";
-
   const { openModal } = useContactModal();
+
+  const pathname = usePathname();
+
+  // ambil segment pertama
+  const segments = pathname.split("/").filter(Boolean);
+  const segment = segments[0];
+
+  // daftar bahasa yang valid
+  const allowedLangs = ["id", "en", "sg", "my"];
+
+  // tentukan lang
+  const lang = allowedLangs.includes(segment) ? segment : "sg";
 
   const button = {
     id: { contact: "Hubungi Kami", product: "Jelajahi Produk Kami" },
@@ -105,7 +113,7 @@ const Hero = () => {
                 window.open(
                   `https://maps.app.goo.gl/8SGNojC2gyetjLkA9`,
                   "_blank",
-                  "noopener,noreferrer"
+                  "noopener,noreferrer",
                 )
               }
               className="border border-[#3A4E84] text-[#3A4E84] w-full sm:w-[240px] h-[56px] rounded-lg font-bold cursor-pointer hover:bg-[#3A4E84] hover:text-white"

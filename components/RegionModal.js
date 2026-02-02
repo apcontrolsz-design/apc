@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { X } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -18,10 +18,10 @@ const regions = [
     path: "/id",
   },
   {
-    id: "id-en",
+    id: "en",
     country: "Indonesia",
     label: "PT AP Controls - English",
-    path: "/id-en",
+    path: "/en",
   },
   {
     id: "my",
@@ -33,6 +33,22 @@ const regions = [
 
 const RegionModal = ({ open, onClose, active }) => {
   const router = useRouter();
+
+  useEffect(() => {
+    if (!open) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [open, onClose]);
 
   if (!open) return null;
 

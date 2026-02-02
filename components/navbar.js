@@ -1,6 +1,6 @@
 "use client";
 import { usePathname } from "next/navigation";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import ContactModal from "./contactModal";
 import { useContactModal } from "../app/context/ContactModalContext";
@@ -14,21 +14,16 @@ const Navbar = () => {
   const { openModal } = useContactModal();
 
   const pathname = usePathname();
-  const segments = pathname.split("/");
-  const langMap = {
-    id: "id",
-    sg: "sg",
-    my: "my",
-    "id-en": "id_en",
-  };
 
-  const routeMap = {
-    id: "id",
-    sg: "sg",
-    my: "my",
-    id_en: "id-en",
-  };
-  const lang = langMap[segments[1]] || "sg";
+  // ambil segment pertama
+  const segments = pathname.split("/").filter(Boolean);
+  const segment = segments[0];
+
+  // daftar bahasa yang valid
+  const allowedLangs = ["id", "en", "sg", "my"];
+
+  // tentukan lang
+  const lang = allowedLangs.includes(segment) ? segment : "sg";
   const content = {
     id: {
       home: "Halaman Utama",
@@ -52,7 +47,7 @@ const Navbar = () => {
       changeRegion: "Select Region",
       contact: "Contact Us",
     },
-    id_en: {
+    en: {
       home: "Home",
       product: "Products",
       customer: "Our Customers",
@@ -65,12 +60,12 @@ const Navbar = () => {
   const active = pathname.startsWith("/sg")
     ? "sg"
     : pathname.startsWith("/id-en")
-    ? "id-en"
-    : pathname.startsWith("/id")
-    ? "id"
-    : pathname.startsWith("/my")
-    ? "my"
-    : null;
+      ? "id-en"
+      : pathname.startsWith("/id")
+        ? "id"
+        : pathname.startsWith("/my")
+          ? "my"
+          : null;
 
   return (
     <header className="w-full  bg-white">
@@ -109,28 +104,28 @@ const Navbar = () => {
           <ul className="flex gap-8 xl:gap-10 text-sm font-medium">
             <li
               className="cursor-pointer hover:text-[#3A4E84]"
-              onClick={() => router.push(`/${routeMap[lang]}`)}
+              onClick={() => router.push(`/${lang}`)}
             >
               {content[lang].home}
             </li>
-            {(lang === "id" || lang === "sg" || lang === "id_en") && (
+            {(lang === "id" || lang === "sg" || lang === "en") && (
               <li
-                onClick={() => router.push(`/${routeMap[lang]}/product`)}
+                onClick={() => router.push(`/${lang}/product`)}
                 className="cursor-pointer hover:text-[#3A4E84]"
               >
                 {content[lang].product}
               </li>
             )}
-            {(lang === "id" || lang === "id_en") && (
+            {(lang === "id" || lang === "en") && (
               <li
-                onClick={() => router.push(`/${routeMap[lang]}/customer`)}
+                onClick={() => router.push(`/${lang}/customer`)}
                 className="cursor-pointer hover:text-[#3A4E84]"
               >
                 {content[lang].customer}
               </li>
             )}
             <li
-              onClick={() => router.push(`/${routeMap[lang]}/about`)}
+              onClick={() => router.push(`/${lang}/about`)}
               className="cursor-pointer hover:text-[#3A4E84]"
             >
               {content[lang].about}
@@ -180,21 +175,21 @@ const Navbar = () => {
           <ul className="flex flex-col gap-4 text-sm font-medium">
             <li
               className="cursor-pointer"
-              onClick={() => router.push(`/${routeMap[lang]}`)}
+              onClick={() => router.push(`/${lang}`)}
             >
               {content[lang].home}
             </li>
-            {(lang === "id" || lang === "sg" || lang === "id_en") && (
+            {(lang === "id" || lang === "sg" || lang === "en") && (
               <li
-                onClick={() => router.push(`/${routeMap[lang]}/product`)}
+                onClick={() => router.push(`/${lang}/product`)}
                 className="cursor-pointer"
               >
                 {content[lang].product}
               </li>
             )}
-            {(lang === "id" || lang === "id_en") && (
+            {(lang === "id" || lang === "en") && (
               <li
-                onClick={() => router.push(`/${routeMap[lang]}/customer`)}
+                onClick={() => router.push(`/${lang}/customer`)}
                 className="cursor-pointer"
               >
                 {content[lang].customer}
@@ -202,7 +197,7 @@ const Navbar = () => {
             )}
 
             <li
-              onClick={() => router.push(`/${routeMap[lang]}/about`)}
+              onClick={() => router.push(`/${lang}/about`)}
               className="cursor-pointer"
             >
               {content[lang].about}

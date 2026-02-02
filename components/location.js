@@ -1,21 +1,22 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 
 const Location = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const segments = pathname.split("/");
-  const langMap = {
-    id: "id",
-    sg: "sg",
-    my: "my",
-    "id-en": "id_en",
-  };
-  const lang = langMap[segments[1]] || "sg";
 
+  // ambil segment pertama
+  const segments = pathname.split("/").filter(Boolean);
+  const segment = segments[0];
+
+  // daftar bahasa yang valid
+  const allowedLangs = ["id", "en", "sg", "my"];
+
+  // tentukan lang
+  const lang = allowedLangs.includes(segment) ? segment : "sg";
   const content = {
     id: {
       title: "Jangkauan Operasional yang Terintegrasi",
@@ -25,7 +26,7 @@ const Location = () => {
       about: "Tentang Kami",
       region: "Ganti Wilayah",
     },
-    id_en: {
+    en: {
       title: "Regional Presence. Integrated Execution.",
       p: "With operations in Singapore, Indonesia, and Malaysia, AP Controls supports regional customers through coordinated engineering, project execution, and local availability, via AP Controls Pte Ltd (Singapore), PT AP Controls (Indonesia), and Valve Store (Malaysia).",
       img: "https://apcontrols.com.sg/images/be.png",
