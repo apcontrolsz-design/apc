@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useContactModal } from "../../app/context/ContactModalContext";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const Hero = () => {
   const router = useRouter();
@@ -51,20 +52,19 @@ const Hero = () => {
       <div className="flex flex-col items-center h-full gap-8 lg:gap-10">
         {/* IMAGE */}
         <div>
-          <img
-            src="https://apcontrols.com.sg/images/product-bg.png"
+          <Image
+            src="/images/product-bg.webp"
             alt=""
             aria-hidden="true"
+            width={1380}
+            height={514}
             className="
-            
-            w-[1380px]
-            h-[514px]
+          
+              object-contain
+              object-center
 
-            object-contain
-            object-center
-
-            pointer-events-none
-          "
+              pointer-events-none
+            "
             loading="eager"
             decoding="async"
             fetchPriority="high"

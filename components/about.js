@@ -3,6 +3,7 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const About = () => {
   const router = useRouter();
@@ -285,31 +286,32 @@ const About = () => {
           </div>
 
           {/* IMAGE */}
-          <img
-            src="https://apcontrols.com.sg/images/apc-grey.png"
-            alt=""
-            aria-hidden="true"
-            className="
-            relative lg:absolute
-
+          <div
+            className="relative lg:absolute
             right-0 lg:right-[-20px]
             top-auto lg:top-1/2
-            lg:-translate-y-1/2
-
+            lg:-translate-y-1/2            
             w-full sm:w-[480px] lg:w-[680px]
             h-[280px] sm:h-[360px] lg:h-[480px]
-
-            object-contain
-            object-center
-
             -mt-32 sm:-mt-48 lg:mt-0
             z-0 lg:z-20
             pointer-events-none
+            "
+          >
+            <Image
+              src="/images/apc-grey.webp"
+              alt=""
+              aria-hidden="true"
+              className="
+            object-contain
+            object-center
           "
-            loading="eager"
-            decoding="async"
-            fetchPriority="high"
-          />
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+              fill
+            />
+          </div>
         </div>
       </section>
       <section
@@ -331,19 +333,23 @@ const About = () => {
           "
           >
             <div className="flex items-center justify-start">
-              <img
-                src="https://apcontrols.com.sg/images/apc-blue.png"
-                alt=""
-                aria-hidden="true"
-                className="
-                w-[169px]
-                h-[51px]
-                object-contain
-            "
-                loading="eager"
-                decoding="async"
-                fetchPriority="high"
-              />
+              <div
+                className="relative w-[169px]
+                h-[51px]"
+              >
+                <Image
+                  src="/images/apc-blue.webp"
+                  alt=""
+                  aria-hidden="true"
+                  className="
+                      object-contain
+                  "
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
+                  fill
+                />
+              </div>
             </div>
             <h2 className="font-bold text-[28px] sm:text-[32px] lg:text-[36px]">
               {content[lang].title_2}
@@ -353,14 +359,6 @@ const About = () => {
               {content[lang].desc_2}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              {/* <button
-                onClick={() =>
-                  window.open(`/sg`, "_blank", "noopener,noreferrer")
-                }
-              >
-                {content[lang].button_2}
-              </button> */}
-
               <Link
                 href="https://apcontrols.com.sg/sg"
                 target="_blank"
@@ -374,15 +372,16 @@ const About = () => {
 
           {/* IMAGE */}
           <div className="flex items-center">
-            <img
-              src="https://apcontrols.com.sg/images/SG.png"
+            <Image
+              src="/images/SG.webp"
               alt=""
               aria-hidden="true"
               className="
-                w-[307px]
-                h-[384px]
+                
                 object-contain
             "
+              width={307}
+              height={394}
               loading="eager"
               decoding="async"
               fetchPriority="high"
@@ -409,15 +408,15 @@ const About = () => {
           "
           >
             <div className="flex items-center justify-start">
-              <img
-                src="https://apcontrols.com.sg/images/apc-blue.png"
+              <Image
+                src="/images/apc-blue.webp"
                 alt=""
                 aria-hidden="true"
                 className="
-                w-[169px]
-                h-[51px]
-                object-contain
-            "
+                  object-contain
+              "
+                width={169}
+                height={51}
                 loading="eager"
                 decoding="async"
                 fetchPriority="high"
@@ -444,15 +443,13 @@ const About = () => {
 
           {/* IMAGE */}
           <div className="flex items-center">
-            <img
-              src="https://apcontrols.com.sg/images/monas.png"
+            <Image
+              src="/images/monas.png"
               alt=""
               aria-hidden="true"
-              className="
-                w-[307px]
-                h-[384px]
-                object-contain
-            "
+              className="object-contain"
+              width={307}
+              height={384}
               loading="eager"
               decoding="async"
               fetchPriority="high"
@@ -479,15 +476,13 @@ const About = () => {
           "
           >
             <div className="flex items-center justify-start">
-              <img
-                src="https://apcontrols.com.sg/images/apc-blue.png"
+              <Image
+                src="/images/apc-blue.webp"
                 alt=""
                 aria-hidden="true"
-                className="
-                w-[169px]
-                h-[51px]
-                object-contain
-            "
+                className="object-contain"
+                width={169}
+                height={51}
                 loading="eager"
                 decoding="async"
                 fetchPriority="high"
@@ -514,15 +509,15 @@ const About = () => {
 
           {/* IMAGE */}
           <div className="flex items-center">
-            <img
-              src="https://apcontrols.com.sg/images/my.png"
+            <Image
+              src="/images/my.webp"
               alt=""
               aria-hidden="true"
               className="
-                w-[307px]
-                h-[384px]
                 object-contain
             "
+              width={307}
+              height={384}
               loading="eager"
               decoding="async"
               fetchPriority="high"

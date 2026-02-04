@@ -1,6 +1,7 @@
 "use client";
 import { usePathname } from "next/navigation";
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 
 const Footer = () => {
   const pathname = usePathname();
@@ -48,21 +49,24 @@ const Footer = () => {
 
   return (
     <section
-      className="
-    relative max-w-[1440px] mx-auto
-    min-h-[376px]
-    bg-black
-    py-12 sm:py-16 lg:py-20
-    px-6
-    mt-8
-
-    flex flex-col
-  "
+      className="min-h-[376px]
+        bg-black"
     >
-      {/* TOP CONTENT */}
-      <div className="flex flex-col gap-16">
-        <div
-          className="
+      <div
+        className="
+        relative max-w-[1440px] mx-auto
+        
+        py-12 sm:py-16 lg:py-20
+        px-6
+        mt-8
+
+        flex flex-col
+      "
+      >
+        {/* TOP CONTENT */}
+        <div className="flex flex-col gap-16">
+          <div
+            className="
         flex flex-col
         gap-10
         text-center
@@ -71,52 +75,59 @@ const Footer = () => {
         lg:justify-between
         lg:gap-20
       "
-        >
-          <div>
-            <h4 className="text-white font-medium mb-2">Head Office</h4>
-            <p className="text-[#D2D2D2] whitespace-pre-line">
-              {content[lang].address}
-            </p>
+          >
+            <div>
+              <h4 className="text-white font-medium mb-2">Head Office</h4>
+              <p className="text-[#D2D2D2] whitespace-pre-line">
+                {content[lang].address}
+              </p>
+            </div>
+
+            <div>
+              <h4 className="text-white font-medium mb-2">Phone</h4>
+              <p className="text-[#D2D2D2] whitespace-nowrap">
+                {content[lang].phone}
+              </p>
+            </div>
+
+            <div>
+              <h4 className="text-white font-medium mb-2">Email</h4>
+              <p className="text-[#D2D2D2] whitespace-nowrap">
+                {content[lang].email}
+              </p>
+            </div>
           </div>
 
-          <div>
-            <h4 className="text-white font-medium mb-2">Phone</h4>
-            <p className="text-[#D2D2D2] whitespace-nowrap">
-              {content[lang].phone}
-            </p>
-          </div>
-
-          <div>
-            <h4 className="text-white font-medium mb-2">Email</h4>
-            <p className="text-[#D2D2D2] whitespace-nowrap">
-              {content[lang].email}
-            </p>
+          {/* LOGOS */}
+          <div className="flex flex-col sm:flex-row justify-center gap-10">
+            <div className="relative w-[200px] sm:w-[238px] h-[74px] mx-auto sm:mx-0">
+              <Image
+                src="/images/apc-white.webp"
+                alt="AP Controls"
+                className="object-contain"
+                loading="lazy"
+                decoding="async"
+                fill
+              />
+            </div>
+            <div className="relative w-[200px] sm:w-[238px] h-[74px] mx-auto sm:mx-0">
+              <Image
+                src="/images/vs-white.webp"
+                alt="Valve Store"
+                fill
+                className="object-contain"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           </div>
         </div>
 
-        {/* LOGOS */}
-        <div className="flex flex-col sm:flex-row justify-center gap-10">
-          <img
-            src="https://apcontrols.com.sg/images/apc-white.png"
-            alt="AP Controls"
-            className="w-[200px] sm:w-[238px] h-[74px] object-contain mx-auto sm:mx-0"
-            loading="lazy"
-            decoding="async"
-          />
-          <img
-            src="https://apcontrols.com.sg/images/vs-white.png"
-            alt="Valve Store"
-            className="w-[200px] sm:w-[238px] h-[74px] object-contain mx-auto sm:mx-0"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
+        {/* COPYRIGHT — NOW IT WORKS */}
+        <p className="text-white text-center text-sm mt-auto pt-8">
+          ©2026 <strong>AP Controls</strong>
+        </p>
       </div>
-
-      {/* COPYRIGHT — NOW IT WORKS */}
-      <p className="text-white text-center text-sm mt-auto pt-8">
-        ©2026 <strong>AP Controls</strong>
-      </p>
     </section>
   );
 };

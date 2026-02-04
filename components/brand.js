@@ -86,29 +86,34 @@ const Brand = () => {
             </p>
             <div className="flex flex-wrap justify-center gap-x-20 gap-y-10">
               {[
-                "metal-work.png",
-                "GSR.png",
-                "Parker.png",
-                "Pentair.png",
-                "Konan.png",
+                "metal-work.webp",
+                "GSR.webp",
+                "Parker.webp",
+                "Pentair.webp",
+                "Konan.webp",
               ].map((img) => (
-                <img
-                  key={img}
-                  src={`https://apcontrols.com.sg/images/${img}`}
-                  alt={img.replace(".png", "")}
-                  className="
-                  h-[84px] w-[164px]
-                  sm:h-[72px] sm:w-[140px]
+                <div
+                  className="h-[84px] w-[164px]
+                  sm:h-[72px] sm:w-[140px]"
+                >
+                  <img
+                    key={img}
+                    src={`/images/${img}`}
+                    alt={img.replace(".webp", "")}
+                    className="
+                  
                   object-contain
                 "
-                  loading="lazy"
-                  decoding="async"
-                />
+                    fill
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
               ))}
             </div>
             <p>and other established partners.</p>
             <button
-              onClick={() => router.push(`/${routeMap}/product`)}
+              onClick={() => router.push(`/${lang}/product`)}
               className="mt-6 border-2 border-[#3A4E84] text-[#3A4E84] w-full lg:w-[240px] px-6 py-2.5 rounded-lg font-medium hover:bg-[#3A4E84] hover:text-white transition cursor-pointer"
             >
               View Our Partners

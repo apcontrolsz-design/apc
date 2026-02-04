@@ -1,5 +1,8 @@
 "use client";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import fs from "fs";
+import path from "path";
 
 export default function Home() {
   const router = useRouter();
@@ -7,9 +10,10 @@ export default function Home() {
   return (
     <div className="relative min-h-screen overflow-hidden">
       {/* BACKGROUND IMAGE */}
-      <img
-        src="https://apcontrols.com.sg/images/homepage-bg.png"
+      <Image
+        src="/images/homepage-bg.webp"
         alt=""
+        fill
         aria-hidden="true"
         className="absolute inset-0 w-full h-full object-cover object-center"
         loading="eager"
@@ -51,18 +55,24 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-6 items-center">
-            <img
-              src="https://apcontrols.com.sg/images/apc-logo.png"
-              alt="AP Controls"
-              className="w-[200px] sm:w-[238px] h-[60px] sm:h-[74px] object-contain"
-              loading="eager"
-            />
-            <img
-              src="https://apcontrols.com.sg/images/vs-logo.png"
-              alt="Valve Store"
-              className="w-[200px] sm:w-[241px] h-[60px] sm:h-[74px] object-contain"
-              loading="eager"
-            />
+            <div className="relative w-[200px] sm:w-[238px] h-[60px] sm:h-[74px] ">
+              <Image
+                src="/images/apc-white.webp"
+                alt="AP Controls"
+                fill
+                className="object-contain"
+                loading="eager"
+              />
+            </div>
+            <div className="relative w-[200px] sm:w-[241px] h-[60px] sm:h-[74px]">
+              <Image
+                src="/images/vs-white.webp"
+                alt="Valve Store"
+                fill
+                className="object-contain"
+                loading="eager"
+              />
+            </div>
           </div>
 
           <div className="flex flex-col gap-4 max-w-[900px] text-[13px] sm:text-[14px] leading-relaxed">

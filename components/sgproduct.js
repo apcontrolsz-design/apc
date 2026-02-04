@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import Image from "next/image";
 
 const SgProduct = () => {
   const router = useRouter();
@@ -20,20 +21,25 @@ const SgProduct = () => {
     <section className="relative mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8 py-16">
       <div className="flex flex-col items-center gap-10">
         {/* HERO IMAGE */}
-        <img
-          src="https://apcontrols.com.sg/images/sgproduct.png"
-          alt=""
-          aria-hidden="true"
+        <div
           className="
-            w-full
-            max-w-[1258px]
-            max-h-[322px]
-            object-contain
-          "
-          loading="eager"
-          decoding="async"
-          fetchPriority="high"
-        />
+    relative
+    w-full
+    max-w-[1258px]
+    aspect-[1258/322]
+    mx-auto
+  "
+        >
+          <Image
+            src="/images/sgproduct.webp"
+            alt=""
+            aria-hidden="true"
+            fill
+            priority
+            sizes="100vw"
+            className="object-contain"
+          />
+        </div>
 
         {/* TITLE */}
         <div className="w-full text-left">
@@ -64,25 +70,30 @@ const SgProduct = () => {
         "
         >
           {[
-            "metal-work.png",
-            "GSR.png",
-            "Parker.png",
-            "Pentair.png",
-            "Konan.png",
+            "metal-work.webp",
+            "GSR.webp",
+            "Parker.webp",
+            "Pentair.webp",
+            "Konan.webp",
           ].map((img) => (
-            <img
-              key={img}
-              src={`https://apcontrols.com.sg/images/${img}`}
-              alt={img.replace(".png", "")}
-              className="
-                h-12 w-28
+            <div
+              className="h-12 w-28
                 sm:h-14 sm:w-36
-                lg:h-[84px] lg:w-[164px]
+                lg:h-[84px] lg:w-[164px] relative"
+            >
+              <Image
+                key={img}
+                src={`/images/${img}`}
+                alt={img.replace(".webp", "")}
+                className="
+                
                 object-contain
               "
-              loading="lazy"
-              decoding="async"
-            />
+                fill
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           ))}
         </div>
 

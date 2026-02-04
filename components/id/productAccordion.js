@@ -2,7 +2,7 @@
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
-
+import Image from "next/image";
 /* =======================
    DATA
 ======================= */
@@ -15,12 +15,12 @@ const items = [
     },
     images: [
       {
-        src: "https://apcontrols.com.sg/images/be.png",
+        src: "/images/be.webp",
         w: 700,
         h: 427,
       },
       {
-        src: "https://apcontrols.com.sg/images/gabah.png",
+        src: "/images/gabah.webp",
         w: 418,
         h: 426,
       },
@@ -72,17 +72,17 @@ const items = [
     title: { id: "Drum Pulley", en: "Drum Pulley" },
     images: [
       {
-        src: "https://apcontrols.com.sg/images/drum-pulley-3.png",
+        src: "/images/drum-pulley-1.webp",
         w: 358,
         h: 276,
       },
       {
-        src: "https://apcontrols.com.sg/images/drum-pulley-1.png",
+        src: "/images/drum-pulley-2.webp",
         w: 372,
         h: 217,
       },
       {
-        src: "https://apcontrols.com.sg/images/drum-pulley-2.png",
+        src: "/images/drum-pulley-3.webp",
         w: 378,
         h: 293,
       },
@@ -133,12 +133,12 @@ const items = [
     title: { id: "Chain Conveyor", en: "Chain Conveyor" },
     images: [
       {
-        src: "https://apcontrols.com.sg/images/chain-conveyor-1.png",
+        src: "https://apcontrols.com.sg/images/chain-conveyor-1.webp",
         w: 484,
         h: 180,
       },
       {
-        src: "https://apcontrols.com.sg/images/chain-conveyor-2.png",
+        src: "https://apcontrols.com.sg/images/chain-conveyor-2.webp",
         w: 418,
         h: 216,
       },
@@ -193,17 +193,17 @@ const items = [
     },
     images: [
       {
-        src: "https://apcontrols.com.sg/images/screw-conveyor-3.png",
+        src: "/images/screw-conveyor-3.webp",
         w: 206,
         h: 291,
       },
       {
-        src: "https://apcontrols.com.sg/images/screw-conveyor-2.png",
+        src: "/images/screw-conveyor-2.webp",
         w: 627,
         h: 266,
       },
       {
-        src: "https://apcontrols.com.sg/images/screw-conveyor-1.png",
+        src: "/images/screw-conveyor-1.webp",
         w: 332,
         h: 266,
       },
@@ -241,8 +241,8 @@ const items = [
     },
     varian: {
       title: {
-        id: "Variants",
-        en: "Varian Chain Conveyor",
+        en: "Variants",
+        id: "Varian Chain Conveyor",
       },
       desc: {
         id: "Screw conveyor tersedia dalam beberapa varian, termasuk horizontal, inclined, dan vertical, dengan opsi desain dan spesifikasi yang dapat disesuaikan dengan karakteristik material, kapasitas aliran, serta kondisi operasional.",
@@ -258,17 +258,17 @@ const items = [
     },
     images: [
       {
-        src: "https://apcontrols.com.sg/images/belt-conveyor-1.png",
+        src: "/images/belt-conveyor-1.webp",
         w: 350,
         h: 233,
       },
       {
-        src: "https://apcontrols.com.sg/images/belt-conveyor-2.png",
+        src: "/images/belt-conveyor-2.webp",
         w: 436,
         h: 245,
       },
       {
-        src: "https://apcontrols.com.sg/images/belt-conveyor-3.png",
+        src: "/images/belt-conveyor-3.webp",
         w: 292,
         h: 164,
       },
@@ -319,7 +319,7 @@ const items = [
     },
     images: [
       {
-        src: "https://apcontrols.com.sg/images/slide-gate.png",
+        src: "/images/slide-gate.webp",
         w: 947,
         h: 320,
       },
@@ -373,12 +373,12 @@ const items = [
     },
     images: [
       {
-        src: "https://apcontrols.com.sg/images/dust-collector-1.png",
+        src: "/images/dust-collector-1.webp",
         w: 338,
         h: 357,
       },
       {
-        src: "https://apcontrols.com.sg/images/dust-collector-2.png",
+        src: "/images/dust-collector-2.webp",
         w: 297,
         h: 371,
       },
@@ -422,12 +422,12 @@ const items = [
     },
     images: [
       {
-        src: "https://apcontrols.com.sg/images/other-1.png",
+        src: "/images/other-1.webp",
         w: 513,
         h: 322,
       },
       {
-        src: "https://apcontrols.com.sg/images/other-2.png",
+        src: "/images/other-2.webp",
         w: 472,
         h: 265,
       },
@@ -531,29 +531,23 @@ function AccordionContent({ item, lang }) {
                 justify-start items-end"
       >
         {item.images.map((img, i) => (
-          <img
-            key={i}
-            src={img.src}
-            alt=""
-            style={{
-              width: `${img.w}px`,
-              height: `${img.h}px`,
-            }}
-            className="
-              object-contain
-              shrink-0
+          <div key={i} className="">
+            <Image
+              src={img.src}
+              alt=""
+              width={img.w}
+              height={img.h}
+              className={`
+        object-contain shrink-0
 
-              /* MOBILE */
-                max-w-[40vw]
-                !h-auto
-                min-h-[90px]
+        /* MOBILE */
+        max-w-[40vw] !h-auto min-h-[90px]
 
-                /* DESKTOP */
-                lg:max-w-none
-                lg:!h-[unset]
-                lg:min-h-0
-            "
-          />
+        /* DESKTOP */
+        lg:max-w-none lg:!h-[unset] lg:min-h-0
+      `}
+            />
+          </div>
         ))}
       </div>
 
@@ -591,14 +585,12 @@ function DustCAccordionContent({ item, lang }) {
                 justify-start items-start"
       >
         {item.images.map((img, i) => (
-          <img
+          <Image
             key={i}
             src={img.src}
             alt=""
-            style={{
-              width: `${img.w}px`,
-              height: `${img.h}px`,
-            }}
+            width={img.w}
+            height={img.h}
             className="
               object-contain
               shrink-0
@@ -648,14 +640,12 @@ function OtherAccordionContent({ item, lang }) {
                 justify-start items-start"
       >
         {item.images.map((img, i) => (
-          <img
+          <Image
             key={i}
             src={img.src}
             alt=""
-            style={{
-              width: `${img.w}px`,
-              height: `${img.h}px`,
-            }}
+            width={img.w}
+            height={img.h}
             className="
               object-contain
               shrink-0

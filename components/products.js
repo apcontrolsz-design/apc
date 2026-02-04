@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 const products = [
   {
     key: "bucket-elevator",
-    img: "https://apcontrols.com.sg/images/be.png",
+    img: "/images/be.png",
     content: {
       id: {
         title: "Bucket Elevator",
@@ -33,7 +33,7 @@ const products = [
 
   {
     key: "drum-pulley",
-    img: "https://apcontrols.com.sg/images/drum-pulley.png",
+    img: "/images/drum-pulley.png",
     content: {
       id: {
         title: "Drum Pulley",
@@ -53,7 +53,7 @@ const products = [
 
   {
     key: "chain-conveyor",
-    img: "https://apcontrols.com.sg/images/cc.png",
+    img: "/images/cc.png",
     content: {
       id: {
         title: "Chain Conveyor",
@@ -78,7 +78,7 @@ const products = [
 
   {
     key: "screw-conveyor",
-    img: "https://apcontrols.com.sg/images/screw-conveyor.png",
+    img: "/images/screw-conveyor.png",
     content: {
       id: {
         title: "Screw Conveyor",
@@ -102,7 +102,7 @@ const products = [
   },
   {
     key: "belt-conveyor",
-    img: "https://apcontrols.com.sg/images/belt-conveyor.png",
+    img: "/images/belt-conveyor.png",
     content: {
       id: {
         title: "Belt Conveyor",

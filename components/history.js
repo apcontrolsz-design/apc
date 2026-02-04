@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const History = () => {
   const pathname = usePathname();
@@ -113,17 +114,20 @@ const History = () => {
       </div>
 
       {/* BACKGROUND IMAGE */}
-      <div className="relative w-full mt-6">
-        <img
-          src="https://apcontrols.com.sg/images/history-bg.png"
+      <div
+        className="relative w-full mt-6 w-full
+            aspect-[1440/598]"
+      >
+        <Image
+          src="/images/history-bg.webp"
           alt=""
           aria-hidden="true"
           className="
-            w-full
-            aspect-[1440/598]
+            
             object-cover
             object-center
           "
+          fill
           loading="eager"
           decoding="async"
           fetchPriority="high"

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { useContactModal } from "../../app/context/ContactModalContext";
+import Image from "next/image";
 
 const Customer = () => {
   const pathname = usePathname();
@@ -22,8 +23,12 @@ const Customer = () => {
 
   const content = {
     id: {
-      title:
-        "Puluhan Tahun Dipercaya Perusahaan Terkemuka di Seluruh Indonesia",
+      title: (
+        <>
+          Puluhan Tahun Dipercaya Perusahaan <br className="" /> Terkemuka di
+          Seluruh Indonesia
+        </>
+      ),
       p: (
         <>
           Terbukti di berbagai sektor industri dan dipercaya oleh pelanggan,
@@ -61,58 +66,64 @@ const Customer = () => {
 
   const { openModal } = useContactModal();
 
-  const logoClass =
-    "w-[120px] h-[60px] sm:w-[136px] sm:h-[70px] object-contain";
+  const logoClass = "";
 
   const rows = [
     [
-      "Japfa.png",
-      "STP.png",
-      "de-heus.png",
-      "MU.png",
-      "sido-agung.png",
-      "Malindo.png",
+      "Japfa.webp",
+      "STP.webp",
+      "de-heus.webp",
+      "MU.webp",
+      "sido-agung.webp",
+      "Malindo.webp",
     ],
     [
-      "Bogasari.png",
-      "CJ.png",
-      "id_food.png",
-      "am.png",
-      "SPV.png",
-      "kapal-api.png",
+      "Bogasari.webp",
+      "CJ.webp",
+      "id_food.webp",
+      "am.webp",
+      "SPV.webp",
+      "kapal-api.webp",
     ],
-    ["QL.png", "Murti.png", "Bonecom.png", "PCG.png", "CPI.png", "Cargill.png"],
+    [
+      "QL.webp",
+      "Murti.webp",
+      "Bonecom.webp",
+      "PCG.webp",
+      "CPI.webp",
+      "Cargill.webp",
+    ],
   ];
 
   return (
     <>
-      <section
-        className="
-            relative max-w-[1440px] mx-auto
-            h-[480px] sm:h-[600px] lg:h-[870px]
-            px-4 sm:px-6 lg:px-8 lg:py-16 py-4
-            flex items-center justify-start
-            bg-no-repeat bg-center bg-contain
-        "
-        style={{
-          backgroundImage:
-            "url('https://apcontrols.com.sg/images/apc-customer-bg.png')",
-        }}
-      >
-        {/* CONTENT */}
-        <div className="text-center max-w-[800px]">
+      <section className="relative w-full h-[480px] sm:h-[600px] lg:h-[870px] flex items-center justify-start px-4 sm:px-6 lg:px-8 lg:py-16">
+        {/* BACKGROUND IMAGE FULL WIDTH */}
+        <Image
+          src="/images/apc-customer-bg.webp"
+          alt=""
+          aria-hidden="true"
+          fill
+          priority
+          className="object-cover object-center -z-10"
+        />
+
+        {/* CONTENT WRAPPER */}
+        <div className="relative w-full max-w-[1440px] mx-auto text-center">
           <h2 className="font-bold text-[28px] sm:text-[32px] lg:text-[40px] mb-4 text-start text-white">
             {content[lang].title}
           </h2>
+          {/* Bisa tambah konten lain di sini */}
         </div>
       </section>
+
       {/* section 2 */}
 
       <section
         className="
             relative max-w-[1440px] mx-auto
             px-4 sm:px-6
-       
+            mt-10
     
         "
       >
@@ -142,14 +153,17 @@ const Customer = () => {
               "
               >
                 {row.map((img) => (
-                  <img
-                    key={img}
-                    src={`https://apcontrols.com.sg/images/${img}`}
-                    alt={img.replace(".png", "")}
-                    className={logoClass}
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  <div className="relative w-[120px] h-[60px] sm:w-[136px] sm:h-[70px]">
+                    <Image
+                      key={img}
+                      src={`/images/${img}`}
+                      alt={img.replace(".webp", "")}
+                      className="object-contain"
+                      loading="lazy"
+                      fill
+                      decoding="async"
+                    />
+                  </div>
                 ))}
               </div>
             ))}
@@ -170,20 +184,23 @@ const Customer = () => {
         <div className="flex flex-col lg:flex-row items-center gap-10">
           {/* IMAGE */}
           <div className="flex justify-center lg:justify-start w-full lg:w-auto">
-            <img
-              src="https://apcontrols.com.sg/images/customer-id.png"
-              alt=""
-              aria-hidden="true"
-              className="
-        w-[220px] sm:w-[250px] lg:w-[274px]
-        h-auto
-        object-contain
-        pointer-events-none
-      "
-              loading="eager"
-              decoding="async"
-              fetchPriority="high"
-            />
+            <div
+              className="relative w-[220px] sm:w-[250px] lg:w-[274px] h-[290px] sm:h-[330px] lg:h-[367px]
+        pointer-events-none"
+            >
+              <Image
+                src="/images/customer-id.webp"
+                alt=""
+                aria-hidden="true"
+                className="
+                  object-contain
+                "
+                fill
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
+              />
+            </div>
           </div>
 
           {/* TEXT */}

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const Location = () => {
   const router = useRouter();
@@ -80,17 +81,17 @@ const Location = () => {
           <div className="flex flex-wrap justify-center gap-15">
             {[
               {
-                img: "https://apcontrols.com.sg/images/apc-blue.png",
+                img: "/images/apc-blue.webp",
                 title: "Singapore | AP Controls Pte Ltd",
                 path: "/sg",
               },
               {
-                img: "https://apcontrols.com.sg/images/apc-blue.png",
+                img: "/images/apc-blue.webp",
                 title: "Indonesia | PT AP Controls",
                 path: "/id",
               },
               {
-                img: "https://apcontrols.com.sg/images/vs.png",
+                img: "/images/vs.webp",
                 title: "Malaysia | Valve Store",
                 path: "/my",
               },
@@ -106,13 +107,16 @@ const Location = () => {
                   cursor-pointer
                 "
               >
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  className="w-[294px] h-[65px] object-contain"
-                  loading="lazy"
-                  decoding="async"
-                />
+                <div className="relative w-[294px] h-[65px]">
+                  <Image
+                    fill
+                    src={item.img}
+                    alt={item.title}
+                    className="object-contain"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
                 <span className="text-[13px] sm:text-[14px] text-gray-600">
                   {item.title}
                 </span>

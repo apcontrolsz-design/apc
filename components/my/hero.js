@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useContactModal } from "../../app/context/ContactModalContext";
+import Image from "next/image";
 
 const Hero = () => {
   const { openModal } = useContactModal();
@@ -36,27 +37,26 @@ const Hero = () => {
       <div className="flex flex-col lg:flex-row items-center lg:items-stretch h-full gap-8">
         {/* IMAGE */}
         <div className="flex items-center">
-          <img
-            src="https://apcontrols.com.sg/images/valve-store.png"
-            alt=""
-            aria-hidden="true"
-            className="
-  
-            
-            w-full sm:w-[480px] lg:w-[655px]
-            h-[280px] sm:h-[360px] lg:h-[495px]
-
-            object-contain
-            object-center
-
-            
-            z-0 lg:z-20
-            pointer-events-none
-          "
-            loading="eager"
-            decoding="async"
-            fetchPriority="high"
-          />
+          <div
+            className="relative w-full sm:w-[480px] lg:w-[655px]
+            h-[280px] sm:h-[360px] lg:h-[495px] z-0 lg:z-20
+                pointer-events-none"
+          >
+            <Image
+              src="/images/valve-store.webp"
+              alt=""
+              aria-hidden="true"
+              fill={true}
+              className="
+                object-contain
+                object-center
+                
+              "
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+            />
+          </div>
         </div>
 
         {/* TEXT */}

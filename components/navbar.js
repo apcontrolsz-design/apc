@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import ContactModal from "./contactModal";
 import { useContactModal } from "../app/context/ContactModalContext";
 import RegionModal from "./RegionModal";
+import Image from "next/image";
 
 const Navbar = () => {
   const router = useRouter();
@@ -76,21 +77,26 @@ const Navbar = () => {
       />
       <div className="max-w-[1440px] h-[118px] flex items-center justify-between px-4 mx-auto">
         {/* Logo */}
-        <img
-          src="https://apcontrols.com.sg/images/apc-blue.png"
-          alt="AP Controls"
-          className="
-            w-[200px] h-[60px]
+        <div
+          className="relative w-[200px] h-[60px]
             [@media(min-width:1070px)]:w-[260px]
-            [@media(min-width:1070px)]:h-[78px]
+            [@media(min-width:1070px)]:h-[78px]"
+        >
+          <Image
+            src={lang === "my" ? "/images/vs-logo.png" : "/images/apc-blue.png"}
+            alt="AP Controls"
+            className="
+           
 
             object-contain
             object-center
           "
-          loading="eager"
-          decoding="async"
-          fetchPriority="high"
-        />
+            fill
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
+          />
+        </div>
 
         {/* Desktop Menu */}
         <div

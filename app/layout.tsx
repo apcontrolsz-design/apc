@@ -5,6 +5,8 @@ import Script from "next/script";
 import { ContactModalProvider } from "./context/ContactModalContext";
 import ContactModalWrapper from "./context/ContactModalWrapper";
 import { Suspense } from "react";
+import fs from "fs";
+import path from "path";
 
 const inter = Inter({
   subsets: ["latin"],

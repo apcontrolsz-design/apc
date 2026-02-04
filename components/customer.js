@@ -98,7 +98,7 @@ const Customer = () => {
               {row.map((img) => (
                 <img
                   key={img}
-                  src={`https://apcontrols.com.sg/images/${img}`}
+                  src={`/images/${img}`}
                   alt={img.replace(".png", "")}
                   className={logoClass}
                   loading="lazy"
@@ -113,7 +113,7 @@ const Customer = () => {
 
           {/* BUTTON */}
           <button
-            onClick={() => router.push(`${lang}/customer`)}
+            onClick={() => router.push(`/${lang}/customer`)}
             className="
               mt-8
               border-2 border-[#3A4E84]

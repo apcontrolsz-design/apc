@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useContactModal } from "../../app/context/ContactModalContext";
+import Image from "next/image";
 
 const Brand = () => {
   const router = useRouter();
@@ -23,20 +24,26 @@ const Brand = () => {
     <section className="relative mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8 py-16">
       <div className="flex flex-col items-center gap-10">
         {/* HERO IMAGE */}
-        <img
-          src="https://apcontrols.com.sg/images/my-brand.png"
-          alt=""
-          aria-hidden="true"
-          className="
-            w-full
+        <div
+          className="w-full
+            relative
             max-w-[1258px]
-            max-h-[322px]
+            h-[322px]"
+        >
+          <Image
+            src="/images/my-brand.webp"
+            alt=""
+            aria-hidden="true"
+            className="
+            
             object-contain
           "
-          loading="eager"
-          decoding="async"
-          fetchPriority="high"
-        />
+            fill
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
+          />
+        </div>
 
         {/* TITLE */}
         <div className="w-full text-left">
@@ -62,21 +69,25 @@ const Brand = () => {
           gap-y-8
         "
           >
-            {["metal-work.png", "GSR.png", "Parker.png", "SMC.png"].map(
+            {["metal-work.webp", "GSR.webp", "Parker.webp", "SMC.webp"].map(
               (img) => (
-                <img
-                  key={img}
-                  src={`https://apcontrols.com.sg/images/${img}`}
-                  alt={img.replace(".png", "")}
-                  className="
-                h-12 w-28
+                <div
+                  className="relative h-12 w-28
                 sm:h-14 sm:w-36
-                lg:h-[84px] lg:w-[164px]
-                object-contain
-              "
-                  loading="lazy"
-                  decoding="async"
-                />
+                lg:h-[84px] lg:w-[164px]"
+                >
+                  <Image
+                    key={img}
+                    src={`/images/${img}`}
+                    alt={img.replace(".webp", "")}
+                    className=" 
+                      object-contain
+                    "
+                    fill
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
               ),
             )}
           </div>
@@ -88,21 +99,28 @@ const Brand = () => {
           gap-y-8
         "
           >
-            {["Coax.png", "Mecair.png", "MPM.png", "stif.png"].map((img) => (
-              <img
-                key={img}
-                src={`https://apcontrols.com.sg/images/${img}`}
-                alt={img.replace(".png", "")}
-                className="
-                h-12 w-28
+            {["Coax.webp", "Mecair.webp", "MPM.webp", "stif.webp"].map(
+              (img) => (
+                <div
+                  className="relative h-12 w-28
                 sm:h-14 sm:w-36
-                lg:h-[84px] lg:w-[164px]
+                lg:h-[84px] lg:w-[164px]"
+                >
+                  <Image
+                    key={img}
+                    src={`/images/${img}`}
+                    alt={img.replace(".webp", "")}
+                    className="
+                
                 object-contain
               "
-                loading="lazy"
-                decoding="async"
-              />
-            ))}
+                    fill
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              ),
+            )}
           </div>
         </div>
 

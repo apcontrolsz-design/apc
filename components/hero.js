@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useContactModal } from "../app/context/ContactModalContext";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const Hero = () => {
   const router = useRouter();
@@ -105,31 +106,36 @@ const Hero = () => {
         </div>
 
         {/* IMAGE */}
-        <img
-          src="https://apcontrols.com.sg/images/apc-grey.png"
-          alt=""
-          aria-hidden="true"
-          className="
-            relative lg:absolute
+        <div
+          className="relative lg:absolute
 
             right-0 lg:right-[-20px]
             top-auto lg:top-1/2
             lg:-translate-y-1/2
 
             w-full sm:w-[480px] lg:w-[680px]
-            h-[280px] sm:h-[360px] lg:h-[480px]
+            h-[280px] sm:h-[360px] lg:h-[480px]  -mt-32 sm:-mt-48 lg:mt-0
+            z-0 lg:z-20
+            pointer-events-none"
+        >
+          <Image
+            src="/images/apc-grey.webp"
+            alt=""
+            aria-hidden="true"
+            className="
+            
 
             object-contain
             object-center
 
-            -mt-32 sm:-mt-48 lg:mt-0
-            z-0 lg:z-20
-            pointer-events-none
+           
           "
-          loading="eager"
-          decoding="async"
-          fetchPriority="high"
-        />
+            fill
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
+          />
+        </div>
       </div>
     </section>
   );
