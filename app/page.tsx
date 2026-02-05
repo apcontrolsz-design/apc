@@ -1,8 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import fs from "fs";
-import path from "path";
 
 export default function Home() {
   const router = useRouter();

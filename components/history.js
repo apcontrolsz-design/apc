@@ -93,26 +93,27 @@ const History = () => {
   return (
     <section
       className="
-        relative max-w-[1440px] mx-auto overflow-hidden
+        relative  overflow-hidden
         h-auto mt-2 sm:mt-8 lg:mt-18
       "
     >
-      <div className="flex flex-col gap-6 py-2 px-6">
-        <h2 className="text-[28px] sm:text-[32px] lg:text-[36px]">
-          {content[lang]}
-        </h2>
+      <div className="max-w-[1440px] mx-auto">
+        <div className="flex flex-col gap-6 py-2 px-6">
+          <h2 className="text-[28px] sm:text-[32px] lg:text-[36px]">
+            {content[lang]}
+          </h2>
 
-        {/* INDUSTRY LOOP */}
-        <p className="text-[14px] sm:text-[15px] lg:text-[16px]">
-          {industryList.map((item, index) => (
-            <React.Fragment key={index}>
-              {item}
-              {index !== industryList.length - 1 && " | "}
-            </React.Fragment>
-          ))}
-        </p>
+          {/* INDUSTRY LOOP */}
+          <p className="text-[14px] sm:text-[15px] lg:text-[16px]">
+            {industryList.map((item, index) => (
+              <React.Fragment key={index}>
+                {item}
+                {index !== industryList.length - 1 && " | "}
+              </React.Fragment>
+            ))}
+          </p>
+        </div>
       </div>
-
       {/* BACKGROUND IMAGE */}
       <div
         className="relative w-full mt-6 w-full
