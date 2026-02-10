@@ -29,36 +29,12 @@ const Hero = () => {
   return (
     <section
       className="
-        relative max-w-[1440px] mx-auto overflow-hidden
+        relative max-w-[1440px] mx-auto 
         h-auto lg:h-[532px] 
-        px-6 py-16 lg:py-0
+        px-6  lg:py-0
       "
     >
       <div className="flex flex-col lg:flex-row items-center lg:items-stretch h-full gap-8">
-        {/* IMAGE */}
-        <div className="flex items-center">
-          <div
-            className="relative w-full sm:w-[480px] lg:w-[655px]
-            h-[280px] sm:h-[360px] lg:h-[495px] z-0 lg:z-20
-                pointer-events-none"
-          >
-            <Image
-              src="/images/valve-store.webp"
-              alt=""
-              aria-hidden="true"
-              fill={true}
-              className="
-                object-contain
-                object-center
-                
-              "
-              loading="eager"
-              decoding="async"
-              fetchPriority="high"
-            />
-          </div>
-        </div>
-
         {/* TEXT */}
         <div
           className="
@@ -67,6 +43,8 @@ const Hero = () => {
             flex flex-col justify-center
             gap-4 lg:gap-6
             text-center lg:text-left
+            py-16
+            pt-[118px]
           "
         >
           <h1 className="font-bold text-[28px] sm:text-[32px] lg:text-[36px] max-w-[565px]">
@@ -120,6 +98,29 @@ const Hero = () => {
             >
               Our Address
             </button>
+          </div>
+        </div>
+        {/* Images */}
+        <div className="flex items-center ">
+          <div
+            className="relative
+              w-[561px] h-[290px]
+              pointer-events-none"
+          >
+            <Image
+              src="/images/vsmy.webp"
+              alt=""
+              aria-hidden="true"
+              fill={true}
+              className="
+                object-contain
+                object-center
+                
+              "
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+            />
           </div>
         </div>
       </div>

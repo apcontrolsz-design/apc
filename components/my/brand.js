@@ -21,7 +21,7 @@ const Brand = () => {
   const { openModal } = useContactModal();
 
   return (
-    <section className="relative mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8 py-16">
+    <section className="relative mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8 lg:py-16">
       <div className="flex flex-col items-center gap-10">
         {/* HERO IMAGE */}
         <div

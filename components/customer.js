@@ -38,22 +38,29 @@ const Customer = () => {
 
   const rows = [
     [
-      "Japfa.png",
-      "STP.png",
-      "de-heus.png",
-      "MU.png",
-      "sido-agung.png",
-      "Malindo.png",
+      "Japfa.webp",
+      "STP.webp",
+      "de-heus.webp",
+      "MU.webp",
+      "sido-agung.webp",
+      "Malindo.webp",
     ],
     [
-      "Bogasari.png",
-      "CJ.png",
-      "id_food.png",
-      "am.png",
-      "SPV.png",
-      "kapal-api.png",
+      "Bogasari.webp",
+      "CJ.webp",
+      "id_food.webp",
+      "am.webp",
+      "SPV.webp",
+      "kapal-api.webp",
     ],
-    ["QL.png", "Murti.png", "Bonecom.png", "PCG.png", "CPI.png", "Cargill.png"],
+    [
+      "QL.webp",
+      "Murti.webp",
+      "Bonecom.webp",
+      "PCG.webp",
+      "CPI.webp",
+      "Cargill.webp",
+    ],
   ];
 
   return (

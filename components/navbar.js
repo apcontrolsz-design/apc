@@ -69,7 +69,12 @@ const Navbar = () => {
           : null;
 
   return (
-    <header className="w-full  bg-white">
+    <header
+      className="fixed top-0 left-0 w-full
+            bg-white
+            z-50
+            "
+    >
       <RegionModal
         open={openRegion}
         onClose={() => setOpenRegion(false)}
@@ -83,7 +88,9 @@ const Navbar = () => {
             [@media(min-width:1070px)]:h-[78px]"
         >
           <Image
-            src={lang === "my" ? "/images/vs-logo.png" : "/images/apc-blue.png"}
+            src={
+              lang === "my" ? "/images/vs-logo.webp" : "/images/apc-blue.webp"
+            }
             alt="AP Controls"
             className="
            

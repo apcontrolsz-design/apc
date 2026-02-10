@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 const products = [
   {
     key: "bucket-elevator",
-    img: "/images/be.png",
+    img: "/images/be.webp",
     content: {
       id: {
         title: "Bucket Elevator",
@@ -33,7 +33,7 @@ const products = [
 
   {
     key: "drum-pulley",
-    img: "/images/drum-pulley.png",
+    img: "/images/drum-pulley.webp",
     content: {
       id: {
         title: "Drum Pulley",
@@ -53,7 +53,7 @@ const products = [
 
   {
     key: "chain-conveyor",
-    img: "/images/cc.png",
+    img: "/images/cc.webp",
     content: {
       id: {
         title: "Chain Conveyor",
@@ -78,7 +78,7 @@ const products = [
 
   {
     key: "screw-conveyor",
-    img: "/images/screw-conveyor.png",
+    img: "/images/screw-conveyor.webp",
     content: {
       id: {
         title: "Screw Conveyor",
@@ -102,7 +102,7 @@ const products = [
   },
   {
     key: "belt-conveyor",
-    img: "/images/belt-conveyor.png",
+    img: "/images/belt-conveyor.webp",
     content: {
       id: {
         title: "Belt Conveyor",
@@ -256,13 +256,13 @@ const ProductCarousel = () => {
             {/* NAV BUTTONS */}
             <button
               onClick={prev}
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 p-3 rounded-full shadow hover:scale-110 transition"
+              className="absolute -left-[20px] lg:-left-[60px] top-1/2 -translate-y-1/2 bg-white/80 p-3 rounded-full shadow hover:scale-110 transition"
             >
               ◀
             </button>
             <button
               onClick={next}
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 p-3 rounded-full shadow hover:scale-110 transition"
+              className="absolute -right-[20px] top-1/2 -translate-y-1/2 bg-white/80 p-3 rounded-full shadow hover:scale-110 transition"
             >
               ▶
             </button>

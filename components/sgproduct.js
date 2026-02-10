@@ -19,7 +19,7 @@ const SgProduct = () => {
   const lang = allowedLangs.includes(segment) ? segment : "sg";
   return (
     <section className="relative mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8 py-16">
-      <div className="flex flex-col items-center gap-10">
+      <div className="flex flex-col items-center gap-10 pt-[118px]">
         {/* HERO IMAGE */}
         <div
           className="

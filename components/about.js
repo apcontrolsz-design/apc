@@ -260,12 +260,13 @@ const About = () => {
     <>
       <section
         className="
-        relative max-w-[1440px] mx-auto overflow-hidden
+        relative max-w-[1440px] mx-auto 
         h-auto lg:h-[532px] 
         px-6 py-16 lg:py-0
+        
       "
       >
-        <div className="flex flex-col lg:flex-row items-center lg:items-stretch h-full">
+        <div className="flex flex-col lg:flex-row items-center lg:items-stretch h-full pt-[118px]">
           {/* TEXT */}
           <div
             className="
@@ -289,8 +290,8 @@ const About = () => {
           <div
             className="relative lg:absolute
             right-0 lg:right-[-20px]
-            top-auto lg:top-1/2
-            lg:-translate-y-1/2            
+            top-auto lg:top-[68%]
+            lg:-translate-y-1/2         
             w-full sm:w-[480px] lg:w-[680px]
             h-[280px] sm:h-[360px] lg:h-[480px]
             -mt-32 sm:-mt-48 lg:mt-0
@@ -444,7 +445,7 @@ const About = () => {
           {/* IMAGE */}
           <div className="flex items-center">
             <Image
-              src="/images/monas.png"
+              src="/images/monas.webp"
               alt=""
               aria-hidden="true"
               className="object-contain"

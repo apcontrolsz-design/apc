@@ -65,12 +65,12 @@ const Hero = () => {
   return (
     <section
       className="
-        relative max-w-[1440px] mx-auto overflow-hidden
+        relative max-w-[1440px] mx-auto
         h-auto lg:h-[532px] 
         px-6 py-16 lg:py-0
       "
     >
-      <div className="flex flex-col lg:flex-row items-center lg:items-stretch h-full">
+      <div className="flex flex-col lg:flex-row items-center lg:items-stretch h-full pt-[118px]">
         {/* TEXT */}
         <div
           className="
@@ -110,7 +110,7 @@ const Hero = () => {
           className="relative lg:absolute
 
             right-0 lg:right-[-20px]
-            top-auto lg:top-1/2
+            top-auto lg:top-[68%]
             lg:-translate-y-1/2
 
             w-full sm:w-[480px] lg:w-[680px]

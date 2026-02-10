@@ -49,7 +49,7 @@ const Hero = () => {
         px-6 py-16 lg:py-0
       "
     >
-      <div className="flex flex-col items-center h-full gap-8 lg:gap-10">
+      <div className="flex flex-col items-center h-full gap-8 lg:gap-10 pt-[118px]">
         {/* IMAGE */}
         <div>
           <Image
